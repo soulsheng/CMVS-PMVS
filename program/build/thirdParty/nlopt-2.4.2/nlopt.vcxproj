@@ -53,32 +53,33 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />  </ImportGroup>
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-    <PropertyGroup>
-      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-      <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\Debug\</OutDir>
-      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nlopt.dir\Debug\</IntDir>
-      <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nlopt</TargetName>
-      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
-      <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\Release\</OutDir>
-      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nlopt.dir\Release\</IntDir>
-      <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nlopt</TargetName>
-      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
-      <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\MinSizeRel\</OutDir>
-      <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">nlopt.dir\MinSizeRel\</IntDir>
-      <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">nlopt</TargetName>
-      <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
-      <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\RelWithDebInfo\</OutDir>
-      <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">nlopt.dir\RelWithDebInfo\</IntDir>
-      <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">nlopt</TargetName>
-      <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
-    </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nlopt.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nlopt</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nlopt.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nlopt</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">nlopt.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">nlopt</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">nlopt.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">nlopt</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2;D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cdirect;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\praxis;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\crs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mlsl;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mma;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cobyla;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\newuoa;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\neldermead;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\auglag;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\bobyqa;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\isres;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\slsqp;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\esch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -116,7 +117,8 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat></DebugInformationFormat>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
@@ -145,7 +147,8 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat></DebugInformationFormat>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
@@ -192,62 +195,6 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="..\..\..\thirdParty\nlopt-2.4.2\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule D:/file/code/git/3d/CMVS-PMVS/program/thirdParty/nlopt-2.4.2/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files (x86)\CMake 2.8\bin\cmake.exe" -HD:/file/code/git/3d/CMVS-PMVS/program -BD:/file/code/git/3d/CMVS-PMVS/program/build --check-stamp-file D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\CMakeFiles\generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:/file/code/git/3d/CMVS-PMVS/program/thirdParty/nlopt-2.4.2/CMakeLists.txt;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\CMakeLists.txt;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckIncludeFiles.cmake;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckFunctionExists.cmake;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckTypeSize.cmake;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckIncludeFile.cmake;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\config.cmake.h.in;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule D:/file/code/git/3d/CMVS-PMVS/program/thirdParty/nlopt-2.4.2/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files (x86)\CMake 2.8\bin\cmake.exe" -HD:/file/code/git/3d/CMVS-PMVS/program -BD:/file/code/git/3d/CMVS-PMVS/program/build --check-stamp-file D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\CMakeFiles\generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:/file/code/git/3d/CMVS-PMVS/program/thirdParty/nlopt-2.4.2/CMakeLists.txt;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\CMakeLists.txt;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckIncludeFiles.cmake;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckFunctionExists.cmake;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckTypeSize.cmake;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckIncludeFile.cmake;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\config.cmake.h.in;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule D:/file/code/git/3d/CMVS-PMVS/program/thirdParty/nlopt-2.4.2/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files (x86)\CMake 2.8\bin\cmake.exe" -HD:/file/code/git/3d/CMVS-PMVS/program -BD:/file/code/git/3d/CMVS-PMVS/program/build --check-stamp-file D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\CMakeFiles\generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:/file/code/git/3d/CMVS-PMVS/program/thirdParty/nlopt-2.4.2/CMakeLists.txt;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\CMakeLists.txt;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckIncludeFiles.cmake;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckFunctionExists.cmake;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckTypeSize.cmake;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckIncludeFile.cmake;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\config.cmake.h.in;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule D:/file/code/git/3d/CMVS-PMVS/program/thirdParty/nlopt-2.4.2/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files (x86)\CMake 2.8\bin\cmake.exe" -HD:/file/code/git/3d/CMVS-PMVS/program -BD:/file/code/git/3d/CMVS-PMVS/program/build --check-stamp-file D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\CMakeFiles\generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:/file/code/git/3d/CMVS-PMVS/program/thirdParty/nlopt-2.4.2/CMakeLists.txt;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\CMakeLists.txt;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckIncludeFiles.cmake;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckFunctionExists.cmake;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckTypeSize.cmake;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CheckIncludeFile.cmake;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\config.cmake.h.in;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\nlopt-2.4.2\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\direct\direct-internal.h" />
     <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\direct\direct.h" />
     <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\cdirect\cdirect.h" />
@@ -279,103 +226,103 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\stogo_config.h" />
     <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\stogo.h" />
     <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\tools.h" />
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\direct\DIRect.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\direct\DIRect.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\direct\direct_wrap.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\direct\direct_wrap.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\direct\DIRserial.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\direct\DIRserial.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\direct\DIRsubrout.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\direct\DIRsubrout.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\cdirect\cdirect.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\cdirect\cdirect.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\cdirect\hybrid.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\cdirect\hybrid.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\praxis\praxis.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\praxis\praxis.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\plis.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\plis.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\plip.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\plip.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\pnet.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\pnet.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\mssubs.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\mssubs.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\pssubs.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\pssubs.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\crs\crs.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\crs\crs.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\mlsl\mlsl.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\mlsl\mlsl.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\mma\mma.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\mma\mma.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\mma\ccsa_quadratic.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\mma\ccsa_quadratic.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\cobyla\cobyla.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\cobyla\cobyla.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MinSpace</Optimization>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
@@ -385,131 +332,131 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">MinSpace</Optimization>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\newuoa\newuoa.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\newuoa\newuoa.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\neldermead\nldrmd.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\neldermead\nldrmd.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\neldermead\sbplx.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\neldermead\sbplx.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\auglag\auglag.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\auglag\auglag.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\bobyqa\bobyqa.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\bobyqa\bobyqa.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\isres\isres.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\isres\isres.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\slsqp\slsqp.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\slsqp\slsqp.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\esch\esch.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\esch\esch.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\general.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\general.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\options.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\options.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\optimize.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\optimize.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\deprecated.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\deprecated.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\f77api.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\f77api.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\mt19937ar.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\mt19937ar.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\sobolseq.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\sobolseq.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\timer.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\timer.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\stop.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\stop.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\redblack.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\redblack.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\qsort_r.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\qsort_r.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\rescale.c" >
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\rescale.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\global.cc"  />
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\linalg.cc"  />
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\local.cc"  />
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\stogo.cc"  />
-    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\tools.cc"  />
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\global.cc" />
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\linalg.cc" />
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\local.cc" />
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\stogo.cc" />
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\tools.cc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="D:/file/code/git/3d/CMVS-PMVS/program/build/ZERO_CHECK.vcxproj">
