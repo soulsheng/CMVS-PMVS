@@ -65,3 +65,16 @@
 /program/build-64-12/thirdParty/nlopt-2.4.2/CMakeFiles/*.stamp
 /program/build-64-12/thirdParty/tinycthread/CMakeFiles/*.stamp
 /program/build-64-12/CMakeCache.txt
+/program/build-64-12/x64
+/program/build-64-12/CMakeFiles
+/program/build-64-12/main/*.dir
+/program/build-64-12/thirdParty/graclus1.2/*.dir
+/program/build-64-12/thirdParty/nlopt-2.4.2/*.dir
+/program/build-64-12/thirdParty/tinycthread/*.dir
+/program/build-64-12/*.opensdf
+/program/build-64-12/*.sdf
+/program/build-64-12/*.suo
+/program/build-64-12/main/Release
+/program/build-64-12/main/Debug
+/program/build/main/Release
+/program/build/main/Debug
