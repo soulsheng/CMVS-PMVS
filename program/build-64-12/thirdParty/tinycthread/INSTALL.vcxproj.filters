@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\file\code\git\3d\CMVS-PMVS\program\build-64-12\CMakeFiles\faeb2ecb523ba07a1b20b74762297b42\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{76B00013-6C68-3A00-8C96-D639FA8D1C0B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
