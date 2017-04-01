@@ -1,13 +1,10 @@
-#define _USE_MATH_DEFINES
-#include <cmath>
-
 #include <algorithm>
 #include <numeric>
+//#include <levmar/lm.h>
+#include <gsl/gsl_deriv.h>
+#include <fstream>
 #include "findMatch.h"
 #include "optim.h"
-#include <cstdio>
-
-#include "nlopt.hpp"
 
 using namespace Patch;
 using namespace PMVS3;
@@ -23,18 +20,17 @@ Coptim::Coptim(CfindMatch& findMatch) : m_fm(findMatch) {
 }
 
 void Coptim::init(void) {
-  m_vect0T.resize(m_fm.m_CPU);
-  m_centersT.resize(m_fm.m_CPU);
-  m_raysT.resize(m_fm.m_CPU);
-  m_indexesT.resize(m_fm.m_CPU);
-  m_dscalesT.resize(m_fm.m_CPU);
-  m_ascalesT.resize(m_fm.m_CPU);
-  m_paramsT.resize(m_fm.m_CPU);
+  m_centersT.resize(REFINE_MAX_TASKS);
+  m_raysT.resize(REFINE_MAX_TASKS);
+  m_indexesT.resize(REFINE_MAX_TASKS);
+  m_dscalesT.resize(REFINE_MAX_TASKS);
+  m_ascalesT.resize(REFINE_MAX_TASKS);
+  m_paramsT.resize(REFINE_MAX_TASKS);
   
-  m_texsT.resize(m_fm.m_CPU);
-  m_weightsT.resize(m_fm.m_CPU);
+  m_texsT.resize(REFINE_MAX_TASKS);
+  m_weightsT.resize(REFINE_MAX_TASKS);
 
-  for (int c = 0; c < m_fm.m_CPU; ++c) {
+  for (int c = 0; c < REFINE_MAX_TASKS; ++c) {
     m_texsT[c].resize(m_fm.m_num);
     m_weightsT[c].resize(m_fm.m_num);
     for (int j = 0; j < m_fm.m_tau; ++j)
@@ -114,12 +110,8 @@ int Coptim::preProcess(Cpatch& patch, const int id, const int seed) {
   // Fix the reference image and sort the other  m_tau - 1 images.
   sortImages(patch);
 
-  // Pierre Moulon (it avoid crash in some case)
-  if( (int)patch.m_images.size() > 0)
-  {
-    // setSscales should be here to avoid noisy output
-    m_fm.m_pos.setScales(patch);
-  }
+  // setSscales should be here to avoid noisy output
+  m_fm.m_pos.setScales(patch);
 
   // Check minimum number of images
   if ((int)patch.m_images.size() < m_fm.m_minImageNumThreshold)
@@ -521,11 +513,75 @@ void Coptim::computeUnits(const Patch::Cpatch& patch,
   }
 }
 
+void Coptim::setImageParams(int i, CLImageParams &imParams) {
+    for(int j=0; j<3; j++) {
+        for(int k=0; k<4; k++) {
+            imParams.projection[j].s[k] = m_fm.m_pss.m_photos[i].m_projection[m_fm.m_level][j][k];
+        }
+    }
+    for(int j=0; j<3; j++) {
+        imParams.xaxis.s[j] = m_xaxes[i][j];
+        imParams.yaxis.s[j] = m_yaxes[i][j];
+        imParams.zaxis.s[j] = m_zaxes[i][j];
+    }
+    for(int j=0; j<4; j++) {
+        imParams.center.s[j] = m_fm.m_pss.m_photos[i].m_center[j];
+    }
+    imParams.ipscale = m_ipscales[i];
+}
+
+void Coptim::setPatchParams(Patch::Cpatch& patch, int id, CLPatchParams &patchParams, cl_float4 &encodedVec) {
+  m_indexesT[id] = patch.m_images;
+  const int size = min(m_fm.m_tau, (int)m_indexesT[id].size());
+  
+  float ascale = M_PI / 48.0f;//patch.m_ascale;
+
+  m_centersT[id] = patch.m_coord;
+  m_raysT[id] = patch.m_coord -
+    m_fm.m_pss.m_photos[patch.m_images[0]].m_center;
+  unitize(m_raysT[id]);
+  float rayVec[4];
+  for(int i=0; i<4; i++) rayVec[i] = m_raysT[id][i];
+  float centerVec[4];
+  for(int i=0; i<4; i++) centerVec[i] = m_centersT[id][i];
+  
+  m_dscalesT[id] = patch.m_dscale;
+  m_ascalesT[id] = M_PI / 48.0f;//patch.m_ascale;
+  
+  computeUnits(patch, m_weightsT[id]);
+  for (int i = 1; i < (int)m_weightsT[id].size(); ++i)
+    m_weightsT[id][i] = min(1.0f, m_weightsT[id][0] / m_weightsT[id][i]);  
+  m_weightsT[id][0] = 1.0f;
+  
+  double p[3];
+  encode(patch.m_coord, patch.m_normal, p, id);
+  for(int i=0; i<3; i++) {
+      encodedVec.s[i] = (float)p[i];
+  }
+  encodedVec.s[3] = 1;
+
+  for(int i=0; i<size; i++) {
+      patchParams.indexes[i] = m_indexesT[id][i];
+  }
+  if(m_indexesT[id].size() == 0) printf("empty indexes\n");
+  //for(int i=0; i<m_indexesT[id].size(); i++) {
+  //    if(m_indexesT[id][i] > 7) printf("invalid index %d\n", m_indexesT[id][i]);
+  //}
+
+  for(int i=0; i<4; i++) {
+      patchParams.center.s[i] = centerVec[i];
+      patchParams.ray.s[i] = rayVec[i];
+  }
+  patchParams.dscale = patch.m_dscale;
+  patchParams.ascale = ascale;
+  patchParams.nIndexes = size;
+}
+
 void Coptim::refinePatch(Cpatch& patch, const int id,
                          const int time) {
-  if(!refinePatchBFGS(patch, id, 1000, 1))
-	  std::cout << "refinePatchBFGS failed!" << std::endl;
+  refinePatchBFGS(patch, id, 1000, 1);
 
+  // WORKED REALLY WELL
   if (patch.m_images.empty())
     return;
 }
@@ -533,17 +589,21 @@ void Coptim::refinePatch(Cpatch& patch, const int id,
 //----------------------------------------------------------------------
 // BFGS functions
 //----------------------------------------------------------------------
+double Coptim::my_f(const gsl_vector *v, void *params) {
+  double xs[3] = {gsl_vector_get(v, 0),
+                  gsl_vector_get(v, 1),
+                  gsl_vector_get(v, 2)};
+  const int id = *((int*)params);
 
-double Coptim::my_f(unsigned n, const double *x, double *grad, void *my_func_data)
-{
-  double xs[3] = {x[0], x[1], x[2]};
-  const int id = *((int*)my_func_data);
-
+  //const float sigma = M_PI / 16.0f;//4.0f * M_PI;
+  //const float sigma2 = 2 * sigma * sigma;
   const float angle1 = xs[1] * m_one->m_ascalesT[id];
   const float angle2 = xs[2] * m_one->m_ascalesT[id];
 
-  double ret = 0.0;
-
+  if (angle1 <= - M_PI / 2.0f || M_PI / 2.0f <= angle1 ||
+      angle2 <= - M_PI / 2.0f || M_PI / 2.0f <= angle2)
+    return 2.0f;      
+  
   //?????
   const double bias = 0.0f;//2.0 - exp(- angle1 * angle1 / sigma2) - exp(- angle2 * angle2 / sigma2);
   
@@ -583,13 +643,363 @@ double Coptim::my_f(unsigned n, const double *x, double *grad, void *my_func_dat
         //m_one->m_fm.m_minImageNumThreshold *
         //(m_one->m_fm.m_minImageNumThreshold - 1) / 2)
         mininum * (mininum - 1) / 2)
-      ret = 2.0f;
+      return 2.0f;
     else
-      ret = ans / denom + bias;
+      return ans / denom + bias;
   }
   else {
     if (m_one->m_texsT[id][0].empty())
-      return 2.0;
+      return 2.0f;
+      
+    double ans = 0.0f;
+    int denom = 0;
+    for (int i = 1; i < size; ++i) {
+      if (m_one->m_texsT[id][i].empty())
+        continue;
+      ans +=
+        robustincc(1.0 - m_one->dot(m_one->m_texsT[id][0], m_one->m_texsT[id][i]));
+      //ans +=
+      //  m_one->dot(m_one->m_texsT[id][0], m_one->m_texsT[id][i]);
+      denom++;
+    }
+    //if (denom < m_one->m_fm.m_minImageNumThreshold - 1)
+    if (denom < mininum - 1)
+      return 2.0f;
+    else
+      return ans / denom + bias;
+  }
+}
+
+/* The gradient of f, df = (df/dx, df/dy). */
+void Coptim::my_df(const gsl_vector *v, void *params,
+                   gsl_vector *df) {
+  int which = 1;
+  if (which == 0) {
+      const double x0 = gsl_vector_get(v, 0);
+  const double x1 = gsl_vector_get(v, 1);
+  const double x2 = gsl_vector_get(v, 2);
+
+  double dfdx0, dfdx1, dfdx2;
+
+  //????
+  const double step = 0.4f;//0.4f;
+  gsl_vector* x = gsl_vector_alloc (3);
+  //-------------------------------------------------------
+  gsl_vector_set(x, 0, x0 + step);
+  gsl_vector_set(x, 1, x1);
+  gsl_vector_set(x, 2, x2);
+  dfdx0 = my_f(x, params);
+  gsl_vector_set(x, 0, x0 - step);
+  dfdx0 -= my_f(x, params);
+  dfdx0 /= 2.0 * step;
+  //-------------------------------------------------------
+  gsl_vector_set(x, 0, x0);
+  gsl_vector_set(x, 1, x1 + step);
+  dfdx1 = my_f(x, params);
+  gsl_vector_set(x, 1, x1 - step);
+  dfdx1 -= my_f(x, params);
+  dfdx1 /= 2.0 * step;
+  //-------------------------------------------------------
+  gsl_vector_set(x, 1, x1);
+  gsl_vector_set(x, 2, x2 + step);
+  dfdx2 = my_f(x, params);
+  gsl_vector_set(x, 2, x2 - step);
+  dfdx2 -= my_f(x, params);
+  dfdx2 /= 2.0 * step;
+  //-------------------------------------------------------
+  gsl_vector_set(df, 0, dfdx0);
+  gsl_vector_set(df, 1, dfdx1);
+  gsl_vector_set(df, 2, dfdx2);
+
+  gsl_vector_free(x);
+  }
+  else {
+    //???check h is 0.5 or 1.0?
+    const float h = 0.5f;//0.5f;//1.0f;
+    const int id = *((int*)params);
+
+  const double x0 = gsl_vector_get(v, 0);
+  const double x1 = gsl_vector_get(v, 1);
+  const double x2 = gsl_vector_get(v, 2);
+
+  m_one->m_paramsT[id][0] = x0;
+  m_one->m_paramsT[id][1] = x1;
+  m_one->m_paramsT[id][2] = x2;
+
+  //???check debug abserr here how big are they
+  gsl_function func;
+  func.params = params;
+  
+  double result, abserr;
+  func.function = &my_f0;
+  gsl_deriv_central(&func, x0, h, &result, &abserr);
+  gsl_vector_set(df, 0, result);
+  
+  func.function = &my_f1;
+  gsl_deriv_central(&func, x1, h, &result, &abserr);
+  gsl_vector_set(df, 1, result);
+  
+  func.function = &my_f2;  
+  gsl_deriv_central(&func, x2, h, &result, &abserr);
+  
+  gsl_vector_set(df, 2, result);
+  }
+}
+     
+/* Compute both f and df together. */
+void Coptim::my_fdf(const gsl_vector *x, void *params, 
+                    double *f, gsl_vector *df) {  
+  *f = my_f(x, params); 
+  my_df(x, params, df);
+}
+
+double Coptim::my_f0(double x, void* params) {
+  const int id = *((int*)params);
+
+  gsl_vector* v = gsl_vector_alloc (3);
+  gsl_vector_set(v, 0, x);
+  gsl_vector_set(v, 1, m_one->m_paramsT[id][1]);
+  gsl_vector_set(v, 2, m_one->m_paramsT[id][2]);
+
+  const double score = my_f(v, params);
+  gsl_vector_free(v);
+  
+  return score;
+}
+
+double Coptim::my_f1(double x, void* params) {
+  const int id = *((int*)params);
+
+  gsl_vector* v = gsl_vector_alloc (3);
+  gsl_vector_set(v, 0, m_one->m_paramsT[id][0]);
+  gsl_vector_set(v, 1, x);
+  gsl_vector_set(v, 2, m_one->m_paramsT[id][2]);
+
+  const double score = my_f(v, params);
+  gsl_vector_free(v);
+  
+  return score;
+}
+
+double Coptim::my_f2(double x, void* params) {
+  const int id = *((int*)params);
+
+  gsl_vector* v = gsl_vector_alloc (3);
+  gsl_vector_set(v, 0, m_one->m_paramsT[id][0]);
+  gsl_vector_set(v, 1, m_one->m_paramsT[id][1]);
+  gsl_vector_set(v, 2, x);
+  
+  const double score = my_f(v, params);
+  gsl_vector_free(v);
+  
+  return score;
+}
+
+//----------------------------------------------------------------------
+// BFGS functions SSD
+//----------------------------------------------------------------------
+double Coptim::my_f_ssd(const gsl_vector *v, void *params) {
+  double xs[3] = {gsl_vector_get(v, 0),
+                  gsl_vector_get(v, 1),
+                  gsl_vector_get(v, 2)};
+  const int id = *((int*)params);
+
+  //const float sigma = 4.0f * M_PI;
+  //const float sigma2 = 2 * sigma * sigma;
+  const float angle1 = xs[1] * m_one->m_ascalesT[id];
+  const float angle2 = xs[2] * m_one->m_ascalesT[id];
+
+  if (angle1 <= - M_PI / 2.0f || M_PI / 2.0f <= angle1 ||
+      angle2 <= - M_PI / 2.0f || M_PI / 2.0f <= angle2)
+    return 2.0f;      
+  
+  const double bias = 0.0f;//2.0 - exp(- angle1 * angle1 / sigma2) - exp(- angle2 * angle2 / sigma2);
+  
+  Vec4f coord, normal;
+  m_one->decode(coord, normal, xs, id);
+  
+  const int index = m_one->m_indexesT[id][0];
+  Vec4f pxaxis, pyaxis;
+  m_one->getPAxes(index, coord, normal, pxaxis, pyaxis);
+  
+  const int size = min(m_one->m_fm.m_tau, (int)m_one->m_indexesT[id].size());
+  
+  for (int i = 0; i < size; ++i) {
+    int flag;
+    flag = m_one->grabTex(coord, pxaxis, pyaxis, normal, m_one->m_indexesT[id][i],
+                          m_one->m_fm.m_wsize, m_one->m_texsT[id][i]);
+  }
+  m_one->normalize(m_one->m_texsT[id], size);
+  
+  const int pairwise = 0;
+  if (pairwise) {
+    double ans = 0.0f;
+    int denom = 0;
+    for (int i = 0; i < size; ++i) {
+      for (int j = i+1; j < size; ++j) {
+        if (m_one->m_texsT[id][i].empty() || m_one->m_texsT[id][j].empty())
+          continue;
+        
+        ans += m_one->ssd(m_one->m_texsT[id][i], m_one->m_texsT[id][j]);
+        denom++;
+      }
+    }
+    if (denom <
+        m_one->m_fm.m_minImageNumThreshold *
+        (m_one->m_fm.m_minImageNumThreshold - 1) / 2)
+      return 2.0f;
+    else
+      return ans / denom + bias;
+  }
+  else {
+    if (m_one->m_texsT[id][0].empty())
+      return 2.0f;
+      
+    double ans = 0.0f;
+    int denom = 0;
+    for (int i = 1; i < size; ++i) {
+      if (m_one->m_texsT[id][i].empty())
+        continue;
+      ans += m_one->ssd(m_one->m_texsT[id][0], m_one->m_texsT[id][i]);
+      denom++;
+    }
+    if (denom < m_one->m_fm.m_minImageNumThreshold - 1)
+      return 2.0f;
+    else
+      return ans / denom + bias;
+  }
+}
+
+/* The gradient of f, df = (df/dx, df/dy). */
+void Coptim::my_df_ssd(const gsl_vector *v, void *params,
+                       gsl_vector *df) {
+  const float h = 0.5f;
+  const int id = *((int*)params);
+
+  const double x0 = gsl_vector_get(v, 0);
+  const double x1 = gsl_vector_get(v, 1);
+  const double x2 = gsl_vector_get(v, 2);
+
+  m_one->m_paramsT[id][0] = x0;
+  m_one->m_paramsT[id][1] = x1;
+  m_one->m_paramsT[id][2] = x2;
+
+  gsl_function func;
+  func.params = params;
+  
+  //???check debug abserr here how big are they
+  double result, abserr;
+  func.function = &my_f_ssd0;
+  gsl_deriv_central(&func, x0, h, &result, &abserr);
+  gsl_vector_set(df, 0, result);
+
+  func.function = &my_f_ssd1;
+  gsl_deriv_central(&func, x1, h, &result, &abserr);
+  gsl_vector_set(df, 1, result);
+
+  func.function = &my_f_ssd2;  
+  gsl_deriv_central(&func, x2, h, &result, &abserr);
+  gsl_vector_set(df, 2, result);
+}
+     
+/* Compute both f and df together. */
+void Coptim::my_fdf_ssd(const gsl_vector *x, void *params, 
+                        double *f, gsl_vector *df) {  
+  *f = my_f_ssd(x, params); 
+  my_df_ssd(x, params, df);
+}
+
+double Coptim::my_f_ssd0(double x, void* params) {
+  const int id = *((int*)params);
+
+  gsl_vector* v = gsl_vector_alloc (3);
+  gsl_vector_set(v, 0, x);
+  gsl_vector_set(v, 1, m_one->m_paramsT[id][1]);
+  gsl_vector_set(v, 2, m_one->m_paramsT[id][2]);
+
+  const double score = my_f_ssd(v, params);
+  gsl_vector_free(v);
+  
+  return score;
+}
+
+double Coptim::my_f_ssd1(double x, void* params) {
+  const int id = *((int*)params);
+
+  gsl_vector* v = gsl_vector_alloc (3);
+  gsl_vector_set(v, 0, m_one->m_paramsT[id][0]);
+  gsl_vector_set(v, 1, x);
+  gsl_vector_set(v, 2, m_one->m_paramsT[id][2]);
+
+  const double score = my_f_ssd(v, params);
+  gsl_vector_free(v);
+  
+  return score;
+}
+
+double Coptim::my_f_ssd2(double x, void* params) {
+  const int id = *((int*)params);
+
+  gsl_vector* v = gsl_vector_alloc (3);
+  gsl_vector_set(v, 0, m_one->m_paramsT[id][0]);
+  gsl_vector_set(v, 1, m_one->m_paramsT[id][1]);
+  gsl_vector_set(v, 2, x);
+  
+  const double score = my_f_ssd(v, params);
+  gsl_vector_free(v);
+  
+  return score;
+}
+//----------------------------------------------------------------------
+// Depth
+double Coptim::my_f_depth(const gsl_vector *v, void *params) {
+  const int id = *((int*)params);
+  double xs[3] = {m_one->m_paramsT[id][0],
+                  m_one->m_paramsT[id][1],
+                  m_one->m_paramsT[id][2]};
+  xs[0] = gsl_vector_get(v, 0);
+  
+  Vec4f coord, normal;
+  m_one->decode(coord, normal, xs, id);
+  
+  const int index = m_one->m_indexesT[id][0];
+  Vec4f pxaxis, pyaxis;
+  m_one->getPAxes(index, coord, normal, pxaxis, pyaxis);
+  
+  const int size = min(m_one->m_fm.m_tau, (int)m_one->m_indexesT[id].size());
+
+  for (int i = 0; i < size; ++i) {
+    int flag;
+    flag = m_one->grabTex(coord, pxaxis, pyaxis, normal, m_one->m_indexesT[id][i],
+                          m_one->m_fm.m_wsize, m_one->m_texsT[id][i]);
+
+    if (flag == 0)
+      m_one->normalize(m_one->m_texsT[id][i]);
+  }
+
+  const int pairwise = 0;
+  if (pairwise) {
+    double ans = 0.0f;
+    int denom = 0;
+    for (int i = 0; i < size; ++i) {
+      for (int j = i+1; j < size; ++j) {
+        if (m_one->m_texsT[id][i].empty() || m_one->m_texsT[id][j].empty())
+          continue;
+        
+        ans += robustincc(1.0 - m_one->dot(m_one->m_texsT[id][i], m_one->m_texsT[id][j]));
+        denom++;
+      }
+    }
+    if (denom <
+        m_one->m_fm.m_minImageNumThreshold *
+        (m_one->m_fm.m_minImageNumThreshold - 1) / 2)
+      return 2.0f;
+    else
+      return ans / denom;
+  }
+  else {
+    if (m_one->m_texsT[id][0].empty())
+      return 2.0f;
       
     double ans = 0.0f;
     int denom = 0;
@@ -600,23 +1010,88 @@ double Coptim::my_f(unsigned n, const double *x, double *grad, void *my_func_dat
         robustincc(1.0 - m_one->dot(m_one->m_texsT[id][0], m_one->m_texsT[id][i]));
       denom++;
     }
-    //if (denom < m_one->m_fm.m_minImageNumThreshold - 1)
-    if (denom < mininum - 1)
-      ret = 2.0f;
+    if (denom < m_one->m_fm.m_minImageNumThreshold - 1)
+      return 2.0f;
     else
-      ret = ans / denom + bias;
+      return ans / denom;
   }
-
-  return ret;
 }
 
-bool Coptim::refinePatchBFGS(Cpatch& patch, const int id,
-                             const int time, const int ncc)
-{
+/* The gradient of f, df = (df/dx, df/dy). */
+void Coptim::my_df_depth(const gsl_vector *v, void *params,
+                         gsl_vector *df) {
+  int which = 0;
+  if (which == 0) {
+    const double x0 = gsl_vector_get(v, 0);
+
+    double dfdx0;
+  
+    const double step = 0.05f;
+    gsl_vector* x = gsl_vector_alloc (1);
+    //-------------------------------------------------------
+    gsl_vector_set(x, 0, x0 + step);
+    dfdx0 = my_f_depth(x, params);
+    gsl_vector_set(x, 0, x0 - step);
+    dfdx0 -= my_f_depth(x, params);
+    dfdx0 /= 2.0 * step;
+
+    gsl_vector_set(df, 0, dfdx0);
+    
+    gsl_vector_free(x);
+  }
+  else {
+    //???check h is 0.5 or 1.0?
+    const float h = 0.5f;//0.5f;//1.0f;
+    
+    const double x0 = gsl_vector_get(v, 0);
+
+    //???check debug abserr here how big are they
+    gsl_function func;
+    func.params = params;
+    
+    double result, abserr;
+    func.function = &my_f0_depth;
+    gsl_deriv_central(&func, x0, h, &result, &abserr);
+    gsl_vector_set(df, 0, result);
+  }
+}
+     
+/* Compute both f and df together. */
+void Coptim::my_fdf_depth(const gsl_vector *x, void *params, 
+                          double *f, gsl_vector *df) {  
+  *f = my_f_depth(x, params); 
+  my_df_depth(x, params, df);
+}
+
+double Coptim::my_f0_depth(double x, void* params) {
+  gsl_vector* v = gsl_vector_alloc (1);
+  gsl_vector_set(v, 0, x);
+
+  const double score = my_f_depth(v, params);
+  gsl_vector_free(v);
+  
+  return score;
+}
+
+void Coptim::refinePatchBFGS(Cpatch& patch, const int id,
+                             const int time, const int ncc) {
+  int status;
+  const gsl_multimin_fminimizer_type *T;
+  gsl_multimin_fminimizer *s;
+  
+  gsl_multimin_function my_func;
   int idtmp = id;
+  my_func.n = 3;
+  
+  if (ncc)
+    my_func.f = &my_f;
+  else
+    my_func.f = &my_f_ssd;
+  my_func.params = (void *)&idtmp;
   
   m_centersT[id] = patch.m_coord;
-  m_raysT[id] = patch.m_coord - m_fm.m_pss.m_photos[patch.m_images[0]].m_center;
+  m_raysT[id] = patch.m_coord -
+    m_fm.m_pss.m_photos[patch.m_images[0]].m_center;
   unitize(m_raysT[id]);
   m_indexesT[id] = patch.m_images;
   
@@ -630,73 +1105,68 @@ bool Coptim::refinePatchBFGS(Cpatch& patch, const int id,
   
   double p[3];
   encode(patch.m_coord, patch.m_normal, p, id);
-
-  double min_angle = -23.99999;	//(- M_PI / 2.0) / m_one->m_ascalesT[id];
-  double max_angle = 23.99999;	//(M_PI / 2.0) / m_one->m_ascalesT[id];
   
-  std::vector<double> lower_bounds(3);
-  lower_bounds[0] = -HUGE_VAL;		// Not bound
-  lower_bounds[1] = min_angle;
-  lower_bounds[2] = min_angle;
-  std::vector<double> upper_bounds(3);
-  upper_bounds[0] = HUGE_VAL;		// Not bound
-  upper_bounds[1] = max_angle;
-  upper_bounds[2] = max_angle;
-
-  bool success = false;
-
-  try
-  {
-    // LN_NELDERMEAD: Corresponds to the N-Simplex-Algorithm of GSL, that was used originally here
-    // LN_SBPLX
-    // LN_COBYLA
-    // LN_BOBYQA
-    // LN_PRAXIS
-    nlopt::opt opt(nlopt::LN_BOBYQA, 3);
-    opt.set_min_objective(my_f, &idtmp);
-    opt.set_xtol_rel(1.e-7);
-    opt.set_maxeval(time);
+  gsl_vector* x = gsl_vector_alloc (3);
+  gsl_vector_set(x, 0, p[0]);
+  gsl_vector_set(x, 1, p[1]);
+  gsl_vector_set(x, 2, p[2]);
   
-    opt.set_lower_bounds(lower_bounds);
-    opt.set_upper_bounds(upper_bounds);
+  gsl_vector* ss = gsl_vector_alloc (3);
+  gsl_vector_set_all(ss, 1.0);
   
-    std::vector<double> x(3);
-    for(int i = 0; i < 3; i++)
-    {
-      // NLOPT returns an error if x is not within the bounds
-      x[i] = max(min(p[i], upper_bounds[i]), lower_bounds[i]);
-    }
+  T = gsl_multimin_fminimizer_nmsimplex;
+  s = gsl_multimin_fminimizer_alloc (T, 3);
+  gsl_multimin_fminimizer_set (s, &my_func, x, ss);
   
-    double minf;
-    nlopt::result result = opt.optimize(x, minf);
-
-    p[0] = x[0];
-    p[1] = x[1];
-    p[2] = x[2];
-
-    success = (result == nlopt::SUCCESS
-	    || result == nlopt::STOPVAL_REACHED
-	    || result == nlopt::FTOL_REACHED
-	    || result == nlopt::XTOL_REACHED);
-  }
-  catch(std::exception &e)
-  {
-	  success = false;
-  }
-
-  if (success) {
+  int iter = 0;
+  do {
+    ++iter;
+    status = gsl_multimin_fminimizer_iterate (s);
+    
+    if (status)
+      break;
+    
+    double size = gsl_multimin_fminimizer_size(s);
+    //status = gsl_multimin_test_size (size, 1e-2);
+    status = gsl_multimin_test_size (size, 1e-3);
+  } while (status == GSL_CONTINUE && iter < time);
+  //printf("init val %d %lf %lf %lf\n", id, p[0], p[1], p[2]);
+  p[0] = gsl_vector_get(s->x, 0);
+  p[1] = gsl_vector_get(s->x, 1);
+  p[2] = gsl_vector_get(s->x, 2);
+  
+  if (status == GSL_SUCCESS) {
+    //printf("refined val %d %lf %lf %lf\n", id, p[0], p[1], p[2]);
     decode(patch.m_coord, patch.m_normal, p, id);
     
     patch.m_ncc = 1.0 -
       unrobustincc(computeINCC(patch.m_coord,
                                patch.m_normal, patch.m_images, id, 1));
-
   }
-  else {
-    return false;
-  }
+  else
+    patch.m_images.clear();   
+  
+  ++m_status[status + 2];
+  
+  gsl_multimin_fminimizer_free (s);
+  gsl_vector_free (x);
+  gsl_vector_free (ss);
+}
 
-  return true;
+void Coptim::finishRefine(Cpatch &patch, int id, cl_float4 encodedVec, int status) {
+    if(status == REFINE_SUCCESS) {
+        double p[3];
+        for(int i=0; i<3; i++) {
+            p[i] = encodedVec.s[i];
+        }
+        decode(patch.m_coord, patch.m_normal, p, id);
+        patch.m_ncc = 1.0 -
+          unrobustincc(computeINCC(patch.m_coord,
+                                   patch.m_normal, patch.m_images, id, 1));
+    }
+    else {
+        patch.m_images.clear();   
+    }
 }
 
 void Coptim::encode(const Vec4f& coord,
@@ -709,7 +1179,7 @@ void Coptim::encode(const Vec4f& coord, const Vec4f& normal,
   encode(coord, vect, id);
   
   const int image = m_indexesT[id][0];
-  const float fx = m_xaxes[image] * proj(normal); // projects from 4D to 3D, divide by last value
+  const float fx = m_xaxes[image] * proj(normal);
   const float fy = m_yaxes[image] * proj(normal);
   const float fz = m_zaxes[image] * proj(normal);
 
@@ -853,16 +1323,6 @@ int Coptim::grabSafe(const int index, const int size, const Vec3f& center,
   return 1;
 }
 
-// My own optimisaton
-float MyPow2(int x)
-{
-	const float answers[] = {0.0625, 0.125, 0.25, 0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024};
-
-	return answers[x + 4];
-}
-
-static float Log2 = log(2.0f);
-
 int Coptim::grabTex(const Vec4f& coord, const Vec4f& pxaxis, const Vec4f& pyaxis,
 		    const Vec4f& pzaxis, const int index, const int size,
                     std::vector<float>& tex) const {
@@ -884,15 +1344,12 @@ int Coptim::grabTex(const Vec4f& coord, const Vec4f& pxaxis, const Vec4f& pyaxis
   Vec3f dy = m_fm.m_pss.project(index, coord + pyaxis, m_fm.m_level) - center;
   
   const float ratio = (norm(dx) + norm(dy)) / 2.0f;
-  //int leveldif = (int)floor(log(ratio) / log(2.0f) + 0.5f);
-  int leveldif = (int)floor(log(ratio) / Log2 + 0.5f);
+  int leveldif = (int)floor(log(ratio) / log(2.0f) + 0.5f);
 
   // Upper limit is 2
   leveldif = max(-m_fm.m_level, min(2, leveldif));
 
-  //const float scale = pow(2.0f, (float)leveldif);
-
-  const float scale = MyPow2(leveldif);
+  const float scale = pow(2.0f, (float)leveldif);
   const int newlevel = m_fm.m_level + leveldif;
 
   center /= scale;  dx /= scale;  dy /= scale;
@@ -1128,12 +1585,15 @@ void Coptim::normalize(std::vector<float>& tex) {
 float Coptim::dot(const std::vector<float>& tex0,
 		  const std::vector<float>& tex1) const{
 #ifndef PMVS_WNCC
-  // Pierre Moulon (use classic access to array, windows STL do not like begin()-1)
   const int size = (int)tex0.size();
+  vector<float>::const_iterator i0 = tex0.begin() - 1;
+  vector<float>::const_iterator i1 = tex1.begin() - 1;
   float ans = 0.0f;
-  for (int i = 0; i < size; ++i) {
-    ans += tex0[i] * tex1[i];
-  }  
+  vector<float>::const_iterator end0 = tex0.end() - 1;
+  while (i0 != end0) {
+    ans += (*(++i0)) * (*(++i1));
+  }
+  
   return ans / size;
 #else
   const int size = (int)tex0.size();
@@ -1152,11 +1612,15 @@ float Coptim::ssd(const std::vector<float>& tex0,
   const float scale = 0.01;
 
 #ifndef PMVS_WNCC
-  // Pierre Moulon (use classic access to array, windows STL do not like begin()-1)
   const int size = (int)tex0.size();
+  vector<float>::const_iterator i0 = tex0.begin() - 1;
+  vector<float>::const_iterator i1 = tex1.begin() - 1;
   float ans = 0.0f;
-  for(int i=0; i < size; ++i) {
-    ans += fabs( tex0[i] - tex1[i] );
+  vector<float>::const_iterator end0 = tex0.end() - 1;
+  while (i0 != end0) {
+    const float ftmp = fabs((*(++i0)) - (*(++i1)));
+    //ans += (*(++i0)) * (*(++i1));
+    ans += ftmp;
   }
   
   return scale * ans / size;

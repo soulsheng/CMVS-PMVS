@@ -11,11 +11,11 @@ using namespace std;
 using namespace Image;
 
 CdetectFeatures::CdetectFeatures(void) {
-  mtx_init(&m_rwlock, mtx_plain | mtx_recursive);
+  pthread_rwlock_init(&m_rwlock, NULL);
 }
 
 CdetectFeatures::~CdetectFeatures() {
-  mtx_destroy(&m_rwlock);
+  pthread_rwlock_destroy(&m_rwlock);
 }
 
 void CdetectFeatures::run(const CphotoSetS& pss, const int num,
@@ -33,30 +33,30 @@ void CdetectFeatures::run(const CphotoSetS& pss, const int num,
   for (int index = 0; index < num; ++index)
     m_jobs.push_back(index);
   
-  vector<thrd_t> threads(m_CPU);
+  pthread_t threads[m_CPU];
   for (int i = 0; i < m_CPU; ++i)
-    thrd_create(&threads[i], &runThreadTmp, (void*)this);
+    pthread_create(&threads[i], NULL, runThreadTmp, (void*)this);
   for (int i = 0; i < m_CPU; ++i)
-    thrd_join(threads[i], NULL);
+    pthread_join(threads[i], NULL);
   //----------------------------------------------------------------------
   cerr << "done" << endl;
 }
 
-int CdetectFeatures::runThreadTmp(void* arg) {
+void* CdetectFeatures::runThreadTmp(void* arg) {
   CdetectFeatures* detectFeatures = (CdetectFeatures*)arg;  
   detectFeatures->runThread();
-  return 0;
+  return NULL;
 }
 
 void CdetectFeatures::runThread(void) {
   while (1) {
     int index = -1;
-    mtx_lock(&m_rwlock);
+    pthread_rwlock_wrlock(&m_rwlock);
     if (!m_jobs.empty()) {
       index = m_jobs.front();
       m_jobs.pop_front();
     }
-    mtx_unlock(&m_rwlock);
+    pthread_rwlock_unlock(&m_rwlock);
     if (index == -1)
       break;
     

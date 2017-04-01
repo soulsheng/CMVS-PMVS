@@ -1,4 +1,3 @@
-#include <algorithm>
 #include "dog.h"
 #include "point.h"
 

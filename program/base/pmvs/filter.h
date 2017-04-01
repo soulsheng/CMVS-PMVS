@@ -25,11 +25,11 @@ class Cfilter {
  protected:
   void filterOutside(void);
   void filterOutsideThread(void);
-  static int filterOutsideThreadTmp(void* arg);
+  static void* filterOutsideThreadTmp(void* arg);
 
   void filterExact(void);
   void filterExactThread(void);
-  static int filterExactThreadTmp(void* arg);
+  static void* filterExactThreadTmp(void* arg);
   
   void filterNeighbor(const int time);
   void filterSmallGroups(void);
@@ -53,16 +53,16 @@ class Cfilter {
   // Thread related
   //----------------------------------------------------------------------
   void setDepthMapsThread(void);
-  static int setDepthMapsThreadTmp(void* arg);
+  static void* setDepthMapsThreadTmp(void* arg);
   
   void addPatchVThread(void);
-  static int addPatchVThreadTmp(void* arg);
+  static void* addPatchVThreadTmp(void* arg);
   
   void setVGridsVPGridsThread(void);
-  static int setVGridsVPGridsThreadTmp(void* arg);
+  static void* setVGridsVPGridsThreadTmp(void* arg);
 
   void filterNeighborThread(void);
-  static int filterNeighborThreadTmp(void* arg);
+  static void* filterNeighborThreadTmp(void* arg);
   
   CfindMatch& m_fm;
   

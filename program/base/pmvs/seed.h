@@ -6,7 +6,7 @@
 #include "patch.h"
 #include "point.h"
 
-#include "tinycthread.h"
+#include <pthread.h>
 
 namespace PMVS3 {
 class CfindMatch;
@@ -48,7 +48,7 @@ class Cseed {
   // thread related
   //----------------------------------------------------------------------
   void initialMatchThread(void);
-  static int initialMatchThreadTmp(void* arg);
+  static void* initialMatchThreadTmp(void* arg);
 
   // Number of trials
   std::vector<int> m_scounts;

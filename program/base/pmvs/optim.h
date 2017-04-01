@@ -3,11 +3,13 @@
 
 #include <vector>
 #include "patch.h"
+#include <gsl/gsl_multimin.h>
+#include <CL/cl_platform.h>
 
 namespace PMVS3 {
   
 class CfindMatch;
- 
+
 class Coptim {
  public:
   Coptim(CfindMatch& findMatch);
@@ -35,10 +37,16 @@ class Coptim {
   //-----------------------------------------------------------------
   
   int preProcess(Patch::Cpatch& patch, const int id, const int seed);
+  void setImageParams(int i, CLImageParams &imParams);
+  void setPatchParams(Patch::Cpatch& patch, int id, CLPatchParams &patchParams, cl_float4 &encodedVec);
   void refinePatch(Patch::Cpatch& patch, const int id, const int time);
   
-  bool refinePatchBFGS(Patch::Cpatch& patch, const int id, const int time,
-                        const int ncc);
+  void refinePatchBFGS(Patch::Cpatch& patch, const int id, const int time);
+  void refinePatchBFGS(Patch::Cpatch& patch, const int id, const int time,
+                       const int ncc);
+  void refineDepthBFGS(Patch::Cpatch& patch, const int id, const int time,
+                       const int ncc);
+  void finishRefine(Patch::Cpatch &patch, int id, cl_float4 encodedVec, int status);
   
   int postProcess(Patch::Cpatch& patch, const int id, const int seed);
 
@@ -74,6 +82,12 @@ class Coptim {
   int grabSafe(const int index, const int size, const Vec3f& center,
                const Vec3f& dx, const Vec3f& dy, const int level) const;
 
+  double computeSSD(const Vec4f& coord, const Vec4f& normal,
+                    const std::vector<int>& indexes, const int id);
+
+  double computeSSD(const Vec4f& coord, const Vec4f& normal,
+                    const std::vector<int>& indexes, const Vec4f& pxaxis,
+                    const Vec4f& pyaxis, const int id);
   /*
   double computeINCC(const Vec4f& coord, const Vec4f& normal,
                      const std::vector<int>& indexes, const int id,
@@ -95,7 +109,35 @@ class Coptim {
   void func(int m, int n, double* x, double* fvec, int* iflag, void* arg);
 
   //BFGS
-  static double my_f(unsigned n, const double *x, double *grad, void *my_func_data);
+  static double my_f(const gsl_vector *v, void *params);
+  static void my_df(const gsl_vector *v, void *params,
+                    gsl_vector *df);
+  static void my_fdf(const gsl_vector *x, void *params, 
+                     double *f, gsl_vector *df);
+  // for derivative computation
+  static double my_f0(double x, void* params);
+  static double my_f1(double x, void* params);
+  static double my_f2(double x, void* params);
+  //----------------------------------------------------------------------
+  // For ssd
+  static double my_f_ssd(const gsl_vector *v, void *params);
+  static void my_df_ssd(const gsl_vector *v, void *params,
+                        gsl_vector *df);
+  static void my_fdf_ssd(const gsl_vector *x, void *params, 
+                         double *f, gsl_vector *df);
+  // for derivative computation
+  static double my_f_ssd0(double x, void* params);
+  static double my_f_ssd1(double x, void* params);
+  static double my_f_ssd2(double x, void* params);
+  //----------------------------------------------------------------------
+  // For debugging depth
+  static double my_f_depth(const gsl_vector *v, void *params);
+  static void my_df_depth(const gsl_vector *v, void *params,
+                    gsl_vector *df);
+  static void my_fdf_depth(const gsl_vector *x, void *params, 
+                     double *f, gsl_vector *df);
+  // for derivative computation
+  static double my_f0_depth(double x, void* params);
   
   void encode(const Vec4f& coord,
               double* const vect, const int id) const;
@@ -114,7 +156,6 @@ class Coptim {
                      const int robust);
   void getPAxes(const int index, const Vec4f& coord, const Vec4f& normal,
                 Vec4f& pxaxis, Vec4f& pyaxis) const;
-  
   static inline float robustincc(const float rhs) {
     return rhs / (1 + 3 * rhs);
   }
@@ -126,10 +167,9 @@ class Coptim {
  protected:
   
   void setAxesScales(void);
-  
   static Coptim* m_one;  
   CfindMatch& m_fm;
-  
+
   //-----------------------------------------------------------------
   // Axes
   std::vector<Vec3f> m_xaxes;
@@ -140,7 +180,6 @@ class Coptim {
   
   //-----------------------------------------------------------------
   // For threads
-  std::vector<float> m_vect0T;  
   std::vector<Vec4f> m_centersT;
   std::vector<Vec4f> m_raysT;
   std::vector<std::vector<int> > m_indexesT;
@@ -151,13 +190,13 @@ class Coptim {
   std::vector<Vec3f> m_paramsT;
   
   // Grabbed texture
-  std::vector<std::vector<std::vector<float> > > m_texsT; // last is 7x7x3 patch
+  std::vector<std::vector<std::vector<float> > > m_texsT;
   // weights for refineDepthOrientationWeighed
   std::vector<std::vector<float> > m_weightsT;
   // Working array for levmar
   std::vector<std::vector<double> > m_worksT;
   
 };
-};
+}
 
 #endif // PMVS3_OPTIM_H

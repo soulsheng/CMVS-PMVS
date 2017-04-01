@@ -9,8 +9,7 @@
 #include <queue>
 #include "patch.h"
 #include <boost/shared_ptr.hpp>
-#include "tinycthread.h"
-#include "rwmutex.h"
+#include <pthread.h>
 
 #include "../image/photoSetS.h"
 #include "patchOrganizerS.h"
@@ -21,15 +20,16 @@
 #include "option.h"
 
 namespace PMVS3 {
-  
+
 class CfindMatch {
  public:
   CfindMatch(void);
   virtual ~CfindMatch();
 
   void init(const PMVS3::Soption& option);
+  void initCL();
   void run(void);
-  void write(const std::string prefix, bool bExportPLY, bool bExportPatch, bool bExportPSet);
+  void write(const std::string prefix);
   
   int insideBimages(const Vec4f& coord) const;
 
@@ -127,10 +127,10 @@ class CfindMatch {
   // For threads related
   //----------------------------------------------------------------------
   // General lock
-  mtx_t m_lock;
+  pthread_rwlock_t m_lock;
   // For each image
-  std::vector<RWMutex> m_imageLocks;
-  std::vector<RWMutex> m_countLocks;
+  std::vector<pthread_rwlock_t> m_imageLocks;
+  std::vector<pthread_rwlock_t> m_countLocks;
   // count
   int m_count;
   // jobs

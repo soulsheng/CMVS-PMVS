@@ -1,9 +1,6 @@
-#define _USE_MATH_DEFINES
-#include <cmath>
-
 #include <map>
 #include <ctime>
-#include <time.h>
+#include <sys/time.h>
 #include "findMatch.h"
 #include "detectFeatures.h"
 
@@ -17,12 +14,12 @@ CfindMatch::CfindMatch(void)
 }
 
 CfindMatch::~CfindMatch() {
-  mtx_destroy(&m_lock);
-
+  pthread_rwlock_destroy(&m_lock);
+  
   for (int image = 0; image < (int)m_imageLocks.size(); ++image)
-    m_imageLocks[image].destroy();
+    pthread_rwlock_destroy(&m_imageLocks[image]);
   for (int image = 0; image < (int)m_countLocks.size(); ++image)
-    m_countLocks[image].destroy();
+    pthread_rwlock_destroy(&m_countLocks[image]);
 }
 
 void CfindMatch::updateThreshold(void) {
@@ -49,6 +46,7 @@ void CfindMatch::init(const Soption& option) {
   m_wsize = option.m_wsize;
   m_minImageNumThreshold = option.m_minImageNum;
   m_CPU = option.m_CPU;
+  //m_CPU = 128;
   m_setEdge = option.m_setEdge;
   m_sequenceThreshold = option.m_sequence;
 
@@ -58,7 +56,7 @@ void CfindMatch::init(const Soption& option) {
   m_visibleThresholdLoose = 0.0f;
   
   //m_tau = max(option.m_minImageNum * 2, min(m_num, 5));
-  m_tau = min(option.m_minImageNum * 2, m_num);
+  m_tau = min(M_TAU_MAX, min(option.m_minImageNum * 2, m_num));
   
   m_depth = 0;
   
@@ -68,12 +66,12 @@ void CfindMatch::init(const Soption& option) {
   m_visdata2 = option.m_visdata2;
   
   //----------------------------------------------------------------------
-  mtx_init(&m_lock, mtx_plain | mtx_recursive);
+  pthread_rwlock_init(&m_lock, NULL);
   m_imageLocks.resize(m_num);
   m_countLocks.resize(m_num);
   for (int image = 0; image < m_num; ++image) {
-    m_imageLocks[image].init();
-    m_countLocks[image].init();
+    pthread_rwlock_init(&m_imageLocks[image], NULL);
+    pthread_rwlock_init(&m_countLocks[image], NULL);
   }
   // We set m_level + 3, to use multi-resolutional texture grabbing
   m_pss.init(m_images, m_prefix, m_level + 3, m_wsize, 1);
@@ -93,6 +91,7 @@ void CfindMatch::init(const Soption& option) {
   m_expand.init();
   m_filter.init();
   m_optim.init();
+
   //----------------------------------------------------------------------
   // Init thresholds
   m_angleThreshold0 = 60.0f * M_PI / 180.0f;
@@ -192,9 +191,9 @@ int CfindMatch::isNeighborRadius(const Patch::Cpatch& lhs,
 }
 
 void CfindMatch::run(void) {
-  time_t tv;
-  time(&tv); 
-  time_t curtime = tv;
+  struct timeval tv;
+  gettimeofday(&tv, NULL); 
+  time_t curtime = tv.tv_sec;
   
   //----------------------------------------------------------------------
   // Seed generation
@@ -206,7 +205,7 @@ void CfindMatch::run(void) {
   
   //----------------------------------------------------------------------
   // Expansion
-  const int TIME = 1;
+  const int TIME = 3;
   for (int t = 0; t < TIME; ++t) {
     m_expand.run();
 
@@ -224,10 +223,9 @@ void CfindMatch::run(void) {
     
     ++m_depth;
   }
-  time(&tv);
-  cerr << "---- Total: " << (tv - curtime)/CLOCKS_PER_SEC << " secs ----" << endl;
+  cerr << "---- Total: " << tv.tv_sec - curtime << " secs ----" << endl;
 }
 
-void CfindMatch::write(const std::string prefix, bool bExportPLY, bool bExportPatch, bool bExportPSet) {
-  m_pos.writePatches2(prefix, bExportPLY, bExportPatch, bExportPSet);
+void CfindMatch::write(const std::string prefix) {
+  m_pos.writePatches2(prefix);
 }

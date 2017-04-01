@@ -1,11 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
-#define _USE_MATH_DEFINES
-#include <math.h>
+#include <cmath>
 #include "option.h"
 #include <algorithm>
-
 
 using namespace std;
 using namespace PMVS3;

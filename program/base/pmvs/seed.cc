@@ -1,7 +1,7 @@
 #include <time.h>
 #include <numeric>
 #include <ctime>
-#include <time.h>
+#include <sys/time.h>
 #include "seed.h"
 #include "findMatch.h"
 
@@ -70,18 +70,18 @@ void Cseed::run(void) {
     }
   }
 
-  time_t tv;
-  time(&tv);
-  time_t curtime = tv;
-  vector<thrd_t> threads(m_fm.m_CPU);
+  struct timeval tv;
+  gettimeofday(&tv, NULL); 
+  time_t curtime = tv.tv_sec;
+  pthread_t threads[m_fm.m_CPU];
   for (int i = 0; i < m_fm.m_CPU; ++i)
-    thrd_create(&threads[i], &initialMatchThreadTmp, (void*)this);
+    pthread_create(&threads[i], NULL, initialMatchThreadTmp, (void*)this);
   for (int i = 0; i < m_fm.m_CPU; ++i)
-    thrd_join(threads[i], NULL);
+    pthread_join(threads[i], NULL);
   //----------------------------------------------------------------------
   cerr << "done" << endl;
-  time(&tv);
-  cerr << "---- Initial: " << (tv - curtime)/CLOCKS_PER_SEC << " secs ----" << endl;
+  
+  cerr << "---- Initial: " << tv.tv_sec - curtime << " secs ----" << endl;
 
   const int trial = accumulate(m_scounts.begin(), m_scounts.end(), 0);
   const int fail0 = accumulate(m_fcounts0.begin(), m_fcounts0.end(), 0);
@@ -99,28 +99,28 @@ void Cseed::run(void) {
 }
 
 void Cseed::initialMatchThread(void) {
-  mtx_lock(&m_fm.m_lock);
+  pthread_rwlock_wrlock(&m_fm.m_lock);
   const int id = m_fm.m_count++;
-  mtx_unlock(&m_fm.m_lock);
+  pthread_rwlock_unlock(&m_fm.m_lock);
 
   while (1) {
     int index = -1;
-    mtx_lock(&m_fm.m_lock);
+    pthread_rwlock_wrlock(&m_fm.m_lock);
     if (!m_fm.m_jobs.empty()) {
       index = m_fm.m_jobs.front();
       m_fm.m_jobs.pop_front();
     }
-    mtx_unlock(&m_fm.m_lock);
+    pthread_rwlock_unlock(&m_fm.m_lock);
     if (index == -1)
       break;
 
     initialMatch(index, id);
- }
+  }
 }
 
-int Cseed::initialMatchThreadTmp(void* arg) {
+void* Cseed::initialMatchThreadTmp(void* arg) {
   ((Cseed*)arg)->initialMatchThread();
-  return 0;
+  return NULL;
 }
 
 void Cseed::clear(void) {

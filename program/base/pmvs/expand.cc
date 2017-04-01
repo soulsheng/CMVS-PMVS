@@ -1,31 +1,39 @@
-#define _USE_MATH_DEFINES
-#include <cmath>
-
 #include <algorithm>
 #include <numeric>
 #include <iterator>
+#include <string>
 #include "expand.h"
 #include "findMatch.h"
-
-#include "time.h"
 
 using namespace PMVS3;
 using namespace std;
 using namespace Patch;
 
-Cexpand::Cexpand(CfindMatch& findMatch) : m_fm(findMatch) {
+Cexpand::Cexpand(CfindMatch& findMatch) : m_fm(findMatch),
+    m_idQueue(-1),
+    m_postProcessQueue(-1),
+    m_refineThread(m_fm.m_CPU, m_postProcessQueue, m_fm)
+{
+  pthread_cond_init(&m_emptyCondition, NULL);
+  pthread_mutex_init(&m_queueLock, NULL);
+}
+
+Cexpand::~Cexpand() {
+  pthread_cond_destroy(&m_emptyCondition);
+  pthread_mutex_destroy(&m_queueLock);
 }
 
 void Cexpand::init(void) {
 }
 
 void Cexpand::run(void) {
+  m_refineThread.init();
   m_fm.m_count = 0;
   m_fm.m_jobs.clear();
-  m_ecounts.resize(m_fm.m_CPU);
-  m_fcounts0.resize(m_fm.m_CPU);
-  m_fcounts1.resize(m_fm.m_CPU);
-  m_pcounts.resize(m_fm.m_CPU);
+  m_ecounts.resize(REFINE_MAX_TASKS);
+  m_fcounts0.resize(REFINE_MAX_TASKS);
+  m_fcounts1.resize(REFINE_MAX_TASKS);
+  m_pcounts.resize(REFINE_MAX_TASKS);
   fill(m_ecounts.begin(), m_ecounts.end(), 0);
   fill(m_fcounts0.begin(), m_fcounts0.end(), 0);
   fill(m_fcounts1.begin(), m_fcounts1.end(), 0);
@@ -42,14 +50,30 @@ void Cexpand::run(void) {
   }
   // set queue
   m_fm.m_pos.collectPatches(m_queue);
+  m_numPatchesInFlight = m_queue.size();
 
   cerr << "Expanding patches..." << flush;
-  vector<thrd_t> threads(m_fm.m_CPU);
+  cerr << "m_CPU " << m_fm.m_CPU << flush;
+  pthread_t expandThreads[m_fm.m_CPU];
+  pthread_t postProcessThreads[m_fm.m_CPU];
+
+  for(int i=0; i<REFINE_MAX_TASKS; i++) {
+    m_idQueue.enqueue(i);
+  }
+
   for (int c = 0; c < m_fm.m_CPU; ++c)
-    thrd_create(&threads[c], &expandThreadTmp, (void*)this);
+    pthread_create(&postProcessThreads[c], NULL, postProcessThreadTmp, (void*)this);
   for (int c = 0; c < m_fm.m_CPU; ++c)
-    thrd_join(threads[c], NULL); 
-  
+    pthread_create(&expandThreads[c], NULL, expandThreadTmp, (void*)this);
+  for (int c = 0; c < m_fm.m_CPU; ++c) {
+    pthread_join(postProcessThreads[c], NULL); 
+    pthread_join(expandThreads[c], NULL); 
+  }
+
+  printf("total iterations %d\n", m_refineThread.totalIterations());
+
+  m_idQueue.clear();
+
   cerr << endl
        << "---- EXPANSION: " << (time(NULL) - starttime) << " secs ----" << endl;
 
@@ -68,30 +92,40 @@ void Cexpand::run(void) {
        << 100 * (pass + fail1) / (float)trial << endl;
   
 }
-int Cexpand::expandThreadTmp(void* arg) {
+
+void* Cexpand::expandThreadTmp(void* arg) {
   ((Cexpand*)arg)->expandThread();
-  return 0;
+  return NULL;
 }
 
 void Cexpand::expandThread(void) {
-  mtx_lock(&m_fm.m_lock);
-  const int id = m_fm.m_count++;
-  mtx_unlock(&m_fm.m_lock);
+  //pthread_mutex_lock(&m_queueLock);
+  //const int id = m_fm.m_count++;
+  //pthread_mutex_unlock(&m_queueLock);
 
   while (1) {
     Ppatch ppatch;
-    int empty = 0;
-    mtx_lock(&m_fm.m_lock);
-    if (m_queue.empty())
-      empty = 1;
-    else {
-      ppatch = m_queue.top();
-      m_queue.pop();
+    bool finished = false;
+    pthread_mutex_lock(&m_queueLock);
+    while(m_queue.empty() && m_numPatchesInFlight > 0) {
+      pthread_cond_wait(&m_emptyCondition, &m_queueLock);
     }
-    mtx_unlock(&m_fm.m_lock);
+    if(m_numPatchesInFlight == 0) {
+        printf("expand finished, queue size %d\n", m_queue.size());
+        finished = true;
+    }
+    else {
+        ppatch = m_queue.top();
+        m_queue.pop();
+    }
+    pthread_mutex_unlock(&m_queueLock);
 
-    if (empty)
-      break;
+    if (finished) {
+        RefineWorkItem workItem;
+        workItem.status = REFINE_ALL_TASKS_COMPLETE;
+        m_postProcessQueue.enqueue(workItem);
+        break;
+    }
     
     // For each direction;
     vector<vector<Vec4f> > canCoords;
@@ -99,12 +133,21 @@ void Cexpand::expandThread(void) {
 
     for (int i = 0; i < (int)canCoords.size(); ++i) {
       for (int j = 0; j < (int)canCoords[i].size(); ++j) {
+        int id = m_idQueue.dequeue();
         const int flag = expandSub(ppatch, id, canCoords[i][j]);
         // fail
-        if (flag)
+        if (flag) {
+          m_idQueue.enqueue(id);
           ppatch->m_dflag |= (0x0001) << i;
+        }
       }
     }
+    pthread_mutex_lock(&m_queueLock);
+    m_numPatchesInFlight--;
+    if(m_numPatchesInFlight == 0) {
+        pthread_cond_broadcast(&m_emptyCondition);
+    }
+    pthread_mutex_unlock(&m_queueLock);
   }
 }
 
@@ -208,7 +251,8 @@ float Cexpand::computeRadius(const Patch::Cpatch& patch) {
 int Cexpand::expandSub(const Ppatch& orgppatch, const int id,
                        const Vec4f& canCoord) {
   // Choose the closest one
-  Cpatch patch;
+  Ppatch ppatch(new Cpatch());
+  Cpatch &patch = *ppatch;
   patch.m_coord = canCoord;
   patch.m_normal = orgppatch->m_normal;
   patch.m_flag = 1;
@@ -241,9 +285,59 @@ int Cexpand::expandSub(const Ppatch& orgppatch, const int id,
     return 1;
   }
 
-  //-----------------------------------------------------------------
-  m_fm.m_optim.refinePatch(patch, id, 100);
+  pthread_mutex_lock(&m_queueLock);
+  m_numPatchesInFlight++;
+  pthread_mutex_unlock(&m_queueLock);
 
+  RefineWorkItem workItem;
+  workItem.status = REFINE_TASK_INCOMPLETE;
+  workItem.patch = ppatch;
+  workItem.id = id;
+  workItem.patchParams = PCLPatchParams(new CLPatchParams());
+  workItem.numIterations = 0;
+  m_fm.m_optim.setPatchParams(*ppatch, id, *workItem.patchParams, workItem.encodedVec);
+  m_refineThread.enqueueWorkItem(workItem);
+
+  /*
+  //-----------------------------------------------------------------
+  //m_fm.m_optim.refinePatchGPU(patch, id, 100);
+  m_fm.m_optim.refinePatch(patch, id, 100);
+  */
+
+  return 0;
+}
+
+void* Cexpand::postProcessThreadTmp(void* arg) {
+  ((Cexpand*)arg)->postProcessThread();
+  return NULL;
+}
+
+void Cexpand::postProcessThread(void) {
+    RefineWorkItem workItem;
+    int running = 1;
+    while(running) {
+        workItem = m_postProcessQueue.dequeue();
+        if(workItem.status == REFINE_ALL_TASKS_COMPLETE) {
+            break;
+        }
+        else {
+            m_fm.m_optim.finishRefine(*(workItem.patch), workItem.id, workItem.encodedVec, REFINE_SUCCESS);
+            int status = postProcessSub(workItem.patch, workItem.id);
+            if(status == 1) {
+                pthread_mutex_lock(&m_queueLock);
+                m_numPatchesInFlight--;
+                if(m_numPatchesInFlight == 0) {
+                    pthread_cond_broadcast(&m_emptyCondition);
+                }
+                pthread_mutex_unlock(&m_queueLock);
+            }
+            m_idQueue.enqueue(workItem.id);
+        }
+    }
+}
+
+int Cexpand::postProcessSub(const Ppatch& newppatch, const int id) {
+  Cpatch &patch = *newppatch;
   //-----------------------------------------------------------------
   if (m_fm.m_optim.postProcess(patch, id, 0)) {
     ++m_fcounts1[id];
@@ -261,12 +355,13 @@ int Cexpand::expandSub(const Ppatch& orgppatch, const int id,
   m_fm.m_pos.addPatch(ppatch);
 
   if (add) {
-    mtx_lock(&m_fm.m_lock);      
+    pthread_mutex_lock(&m_queueLock);      
     m_queue.push(ppatch);
-    mtx_unlock(&m_fm.m_lock);  
+    pthread_cond_signal(&m_emptyCondition);
+    pthread_mutex_unlock(&m_queueLock);  
   }    
 
-  return 0;
+  return add == 0;
 }
 
 int Cexpand::checkCounts(Patch::Cpatch& patch) {
@@ -294,23 +389,23 @@ int Cexpand::checkCounts(Patch::Cpatch& patch) {
     const int index2 = iy * m_fm.m_pos.m_gwidths[index] + ix;
 
     int flag = 0;
-	m_fm.m_imageLocks[index].rdlock();
+    pthread_rwlock_rdlock(&m_fm.m_imageLocks[index]);
     if (!m_fm.m_pos.m_pgrids[index][index2].empty())
       flag = 1;
-	m_fm.m_imageLocks[index].unlock();
+    pthread_rwlock_unlock(&m_fm.m_imageLocks[index]);
     if (flag) {
       ++full;      ++begin;
       ++begin2;    continue;
     }
     
-    //mtx_lock(&m_fm.m_countLocks[index]);
-	m_fm.m_countLocks[index].rdlock();
+    //pthread_rwlock_wrlock(&m_fm.m_countLocks[index]);
+    pthread_rwlock_rdlock(&m_fm.m_countLocks[index]);
     if (m_fm.m_countThreshold1 <= m_fm.m_pos.m_counts[index][index2])
       ++full;
     else
       ++empty;
     //++m_fm.m_pos.m_counts[index][index2];
-	m_fm.m_countLocks[index].unlock();
+    pthread_rwlock_unlock(&m_fm.m_countLocks[index]);
     ++begin;    ++begin2;
   }
 
@@ -357,14 +452,14 @@ int Cexpand::updateCounts(const Cpatch& patch) {
       
       const int index2 = iy * m_fm.m_pos.m_gwidths[index] + ix;
       
-	  m_fm.m_countLocks[index].wrlock();
+      pthread_rwlock_wrlock(&m_fm.m_countLocks[index]);
       if (m_fm.m_countThreshold1 <= m_fm.m_pos.m_counts[index][index2])
         ++full;
       else
         ++empty;
       ++m_fm.m_pos.m_counts[index][index2];
       
-	  m_fm.m_countLocks[index].unlock();
+      pthread_rwlock_unlock(&m_fm.m_countLocks[index]);
       ++begin;    ++begin2;
     }
   }
@@ -394,13 +489,13 @@ int Cexpand::updateCounts(const Cpatch& patch) {
       
       const int index2 = iy * m_fm.m_pos.m_gwidths[index] + ix;
       
-	  m_fm.m_countLocks[index].wrlock();;
+      pthread_rwlock_wrlock(&m_fm.m_countLocks[index]);
       if (m_fm.m_countThreshold1 <= m_fm.m_pos.m_counts[index][index2])
         ++full;
       else
         ++empty;
       ++m_fm.m_pos.m_counts[index][index2];        
-	  m_fm.m_countLocks[index].unlock();
+      pthread_rwlock_unlock(&m_fm.m_countLocks[index]);
       ++begin;    ++begin2;
     }
   }
