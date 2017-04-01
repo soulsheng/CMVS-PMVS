@@ -206,7 +206,7 @@ void CfindMatch::run(void) {
   
   //----------------------------------------------------------------------
   // Expansion
-  const int TIME = 3;
+  const int TIME = 1;
   for (int t = 0; t < TIME; ++t) {
     m_expand.run();
 
