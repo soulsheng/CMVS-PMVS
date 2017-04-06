@@ -78,3 +78,5 @@
 /program/build-64-12/main/Debug
 /program/build/main/Release
 /program/build/main/Debug
+/program/thirdParty/gsl-1.13
+/program/thirdParty/pthread

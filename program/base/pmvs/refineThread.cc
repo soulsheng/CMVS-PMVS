@@ -195,7 +195,7 @@ void CrefineThread::initCLImageArray() {
 void CrefineThread::initCLImageParams() {
     cl_int clErr;
 
-    CLImageParams imParams[m_fm.m_num];
+    std::vector<CLImageParams> imParams(m_fm.m_num);
 
     for(int i=0; i<m_fm.m_num; i++) {
         m_optim.setImageParams(i, imParams[i]);
@@ -204,7 +204,7 @@ void CrefineThread::initCLImageParams() {
     if(clErr < 0) {
         printf("error creating ImageParams buffer %d\n", clErr);
     }
-    clErr = clEnqueueWriteBuffer(m_clQueue, m_clImageParams, CL_TRUE, 0, m_fm.m_num*sizeof(CLImageParams), imParams, 0, NULL, NULL);
+    clErr = clEnqueueWriteBuffer(m_clQueue, m_clImageParams, CL_TRUE, 0, m_fm.m_num*sizeof(CLImageParams), (void*)&imParams[0], 0, NULL, NULL);
     if(clErr < 0) {
         printf("error writing ImageParams buffer %d\n", clErr);
     }

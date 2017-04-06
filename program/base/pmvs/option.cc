@@ -8,6 +8,8 @@
 using namespace std;
 using namespace PMVS3;
 
+#define M_PI	3.1415926
+
 Soption::Soption(void) {
   m_level = 1;          m_csize = 2;
   m_threshold = 0.7;    m_wsize = 7;

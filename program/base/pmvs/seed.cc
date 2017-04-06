@@ -1,7 +1,7 @@
 #include <time.h>
 #include <numeric>
 #include <ctime>
-#include <sys/time.h>
+#include <time.h>
 #include "seed.h"
 #include "findMatch.h"
 
@@ -70,10 +70,10 @@ void Cseed::run(void) {
     }
   }
 
-  struct timeval tv;
-  gettimeofday(&tv, NULL); 
-  time_t curtime = tv.tv_sec;
-  pthread_t threads[m_fm.m_CPU];
+  time_t tv;
+  time(&tv);
+  time_t curtime = tv;
+  std::vector<pthread_t> threads(m_fm.m_CPU);
   for (int i = 0; i < m_fm.m_CPU; ++i)
     pthread_create(&threads[i], NULL, initialMatchThreadTmp, (void*)this);
   for (int i = 0; i < m_fm.m_CPU; ++i)
@@ -81,7 +81,7 @@ void Cseed::run(void) {
   //----------------------------------------------------------------------
   cerr << "done" << endl;
   
-  cerr << "---- Initial: " << tv.tv_sec - curtime << " secs ----" << endl;
+  cerr << "---- Initial: " << tv - curtime << " secs ----" << endl;
 
   const int trial = accumulate(m_scounts.begin(), m_scounts.end(), 0);
   const int fail0 = accumulate(m_fcounts0.begin(), m_fcounts0.end(), 0);

@@ -1,6 +1,6 @@
 #include <map>
 #include <ctime>
-#include <sys/time.h>
+#include <time.h>
 #include "findMatch.h"
 #include "detectFeatures.h"
 
@@ -191,9 +191,9 @@ int CfindMatch::isNeighborRadius(const Patch::Cpatch& lhs,
 }
 
 void CfindMatch::run(void) {
-  struct timeval tv;
-  gettimeofday(&tv, NULL); 
-  time_t curtime = tv.tv_sec;
+	time_t tv;
+	time(&tv);
+	time_t curtime = tv;
   
   //----------------------------------------------------------------------
   // Seed generation
@@ -223,7 +223,7 @@ void CfindMatch::run(void) {
     
     ++m_depth;
   }
-  cerr << "---- Total: " << tv.tv_sec - curtime << " secs ----" << endl;
+  cerr << "---- Total: " << tv - curtime << " secs ----" << endl;
 }
 
 void CfindMatch::write(const std::string prefix) {

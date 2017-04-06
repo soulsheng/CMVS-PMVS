@@ -33,7 +33,7 @@ void CdetectFeatures::run(const CphotoSetS& pss, const int num,
   for (int index = 0; index < num; ++index)
     m_jobs.push_back(index);
   
-  pthread_t threads[m_CPU];
+  vector<pthread_t> threads(m_CPU);
   for (int i = 0; i < m_CPU; ++i)
     pthread_create(&threads[i], NULL, runThreadTmp, (void*)this);
   for (int i = 0; i < m_CPU; ++i)

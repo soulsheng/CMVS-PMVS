@@ -85,7 +85,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\jpeg-ijg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -114,8 +114,8 @@
     </Midl>
     <Link>
       <AdditionalOptions> /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\base\cmvs\Debug\cmvs_lib.lib;..\base\image\Debug\image_lib.lib;..\thirdParty\graclus1.2\Debug\graclus_lib.lib;D:\file\code\sdk\external\jpeg-6b\lib\jpeg.lib;..\thirdParty\tinycthread\Debug\tinycthread.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\base\cmvs\Debug\cmvs_lib.lib;..\base\image\Debug\image_lib.lib;..\thirdParty\graclus1.2\Debug\graclus_lib.lib;jpeg.lib;..\thirdParty\tinycthread\Debug\tinycthread.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\file\code\sdk\jpeg-ijg\lib\Win32\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ImportLibrary>D:/file/code/git/3d/CMVS-PMVS/program/build/main/Debug/cmvs.lib</ImportLibrary>
       <ProgramDataBaseFile>D:/file/code/git/3d/CMVS-PMVS/program/build/main/Debug/cmvs.pdb</ProgramDataBaseFile>

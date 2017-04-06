@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -56,30 +56,30 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup>
-    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\file\code\git\3d\CMVS-PMVS\program\build-64-12\thirdParty\nlopt-2.4.2\Debug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">nlopt.dir\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">nlopt</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\file\code\git\3d\CMVS-PMVS\program\build-64-12\thirdParty\nlopt-2.4.2\Release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nlopt.dir\Release\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nlopt</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\file\code\git\3d\CMVS-PMVS\program\build-64-12\thirdParty\nlopt-2.4.2\MinSizeRel\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">nlopt.dir\MinSizeRel\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">nlopt</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\file\code\git\3d\CMVS-PMVS\program\build-64-12\thirdParty\nlopt-2.4.2\RelWithDebInfo\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">nlopt.dir\RelWithDebInfo\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">nlopt</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
-  </PropertyGroup>
+    <PropertyGroup>
+      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\file\code\git\3d\CMVS-PMVS\program\build-64-12\thirdParty\nlopt-2.4.2\Debug\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">nlopt.dir\Debug\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">nlopt</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\file\code\git\3d\CMVS-PMVS\program\build-64-12\thirdParty\nlopt-2.4.2\Release\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nlopt.dir\Release\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nlopt</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\file\code\git\3d\CMVS-PMVS\program\build-64-12\thirdParty\nlopt-2.4.2\MinSizeRel\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">nlopt.dir\MinSizeRel\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">nlopt</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\file\code\git\3d\CMVS-PMVS\program\build-64-12\thirdParty\nlopt-2.4.2\RelWithDebInfo\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">nlopt.dir\RelWithDebInfo\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">nlopt</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+    </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2;D:\file\code\git\3d\CMVS-PMVS\program\build-64-12\thirdParty\nlopt-2.4.2;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cdirect;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\praxis;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\crs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mlsl;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mma;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cobyla;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\newuoa;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\neldermead;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\auglag;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\bobyqa;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\isres;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\slsqp;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\esch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
-      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -122,8 +122,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
+      <DebugInformationFormat></DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -155,8 +154,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
+      <DebugInformationFormat></DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -294,103 +292,103 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\stogo_config.h" />
     <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\stogo.h" />
     <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\tools.h" />
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct\DIRect.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct\DIRect.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct\direct_wrap.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct\direct_wrap.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct\DIRserial.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct\DIRserial.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct\DIRsubrout.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct\DIRsubrout.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cdirect\cdirect.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cdirect\cdirect.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cdirect\hybrid.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cdirect\hybrid.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\praxis\praxis.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\praxis\praxis.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\plis.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\plis.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\plip.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\plip.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\pnet.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\pnet.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\mssubs.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\mssubs.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\pssubs.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\pssubs.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\crs\crs.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\crs\crs.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mlsl\mlsl.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mlsl\mlsl.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mma\mma.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mma\mma.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mma\ccsa_quadratic.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mma\ccsa_quadratic.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cobyla\cobyla.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cobyla\cobyla.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MinSpace</Optimization>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
@@ -400,131 +398,131 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MinSpace</Optimization>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\newuoa\newuoa.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\newuoa\newuoa.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\neldermead\nldrmd.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\neldermead\nldrmd.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\neldermead\sbplx.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\neldermead\sbplx.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\auglag\auglag.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\auglag\auglag.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\bobyqa\bobyqa.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\bobyqa\bobyqa.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\isres\isres.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\isres\isres.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\slsqp\slsqp.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\slsqp\slsqp.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\esch\esch.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\esch\esch.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\general.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\general.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\options.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\options.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\optimize.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\optimize.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\deprecated.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\deprecated.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\f77api.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\f77api.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\mt19937ar.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\mt19937ar.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\sobolseq.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\sobolseq.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\timer.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\timer.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\stop.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\stop.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\redblack.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\redblack.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\qsort_r.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\qsort_r.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\rescale.c">
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\rescale.c" >
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\global.cc" />
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\linalg.cc" />
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\local.cc" />
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\stogo.cc" />
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\tools.cc" />
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\global.cc"  />
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\linalg.cc"  />
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\local.cc"  />
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\stogo.cc"  />
+    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\tools.cc"  />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="D:/file/code/git/3d/CMVS-PMVS/program/build-64-12/ZERO_CHECK.vcxproj">

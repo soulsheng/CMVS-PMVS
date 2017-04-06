@@ -54,8 +54,8 @@ void Cexpand::run(void) {
 
   cerr << "Expanding patches..." << flush;
   cerr << "m_CPU " << m_fm.m_CPU << flush;
-  pthread_t expandThreads[m_fm.m_CPU];
-  pthread_t postProcessThreads[m_fm.m_CPU];
+  std::vector<pthread_t> expandThreads(m_fm.m_CPU);
+  std::vector<pthread_t> postProcessThreads(m_fm.m_CPU);
 
   for(int i=0; i<REFINE_MAX_TASKS; i++) {
     m_idQueue.enqueue(i);

@@ -1,7 +1,7 @@
 #include <pthread.h>
 #include <numeric>
 #include <ctime>
-#include <sys/time.h>
+#include <time.h>
 #include "../numeric/mylapack.h"
 #include "findMatch.h"
 #include "filter.h"
@@ -33,9 +33,9 @@ void Cfilter::run(void) {
 }
 
 void Cfilter::filterOutside(void) {
-  struct timeval tv;
-  gettimeofday(&tv, NULL); 
-  time_t curtime = tv.tv_sec;
+  time_t tv;
+  time(&tv);
+  time_t curtime = tv;
   cerr << "FilterOutside" << endl;
   //??? notice (1) here to avoid removing m_fix=1
   m_fm.m_pos.collectPatches(1);
@@ -46,7 +46,7 @@ void Cfilter::filterOutside(void) {
   cerr << "mainbody: " << flush;
   
   m_fm.m_count = 0;
-  pthread_t threads[m_fm.m_CPU];
+  std::vector<pthread_t> threads(m_fm.m_CPU);
   for (int i = 0; i < m_fm.m_CPU; ++i)
     pthread_create(&threads[i], NULL, filterOutsideThreadTmp, (void*)this);
   for (int i = 0; i < m_fm.m_CPU; ++i)
@@ -81,7 +81,7 @@ void Cfilter::filterOutside(void) {
   cerr << (int)m_fm.m_pos.m_ppatches.size() << " -> "
        << (int)m_fm.m_pos.m_ppatches.size() - count << " ("
        << 100 * ((int)m_fm.m_pos.m_ppatches.size() - count) / (float)m_fm.m_pos.m_ppatches.size()
-       << "%)\t" << tv.tv_sec - curtime << " secs" << endl;
+       << "%)\t" << tv - curtime << " secs" << endl;
 }
 
 float Cfilter::computeGain(const Patch::Cpatch& patch, const int lock) {
@@ -212,9 +212,9 @@ void* Cfilter::filterOutsideThreadTmp(void* arg) {
 }
 
 void Cfilter::filterExact(void) {
-  struct timeval tv;
-  gettimeofday(&tv, NULL); 
-  time_t curtime = tv.tv_sec;
+	time_t tv;
+	time(&tv);
+	time_t curtime = tv;
   cerr << "Filter Exact: " << flush;
 
   //??? cannot use (1) because we use patch.m_id to set newimages,....
@@ -228,7 +228,7 @@ void Cfilter::filterExact(void) {
   m_removeimages.resize(psize);  m_removegrids.resize(psize);
 
   m_fm.m_count = 0;
-  pthread_t threads0[m_fm.m_CPU];
+  std::vector<pthread_t> threads0(m_fm.m_CPU);
   for (int i = 0; i < m_fm.m_CPU; ++i)
     pthread_create(&threads0[i], NULL, filterExactThreadTmp, (void*)this);  
   for (int i = 0; i < m_fm.m_CPU; ++i)
@@ -293,7 +293,7 @@ void Cfilter::filterExact(void) {
   cerr << (int)m_fm.m_pos.m_ppatches.size() << " -> "
        << (int)m_fm.m_pos.m_ppatches.size() - count << " ("
        << 100 * ((int)m_fm.m_pos.m_ppatches.size() - count) / (float)m_fm.m_pos.m_ppatches.size()
-       << "%)\t" << tv.tv_sec - curtime << " secs" << endl;
+       << "%)\t" << tv - curtime << " secs" << endl;
 }
 
 void Cfilter::filterExactThread(void) {
@@ -512,9 +512,9 @@ void* Cfilter::filterNeighborThreadTmp(void* arg) {
 }
   
 void Cfilter::filterNeighbor(const int times) {
-  struct timeval tv;
-  gettimeofday(&tv, NULL); 
-  time_t curtime = tv.tv_sec;
+	time_t tv;
+	time(&tv);
+	time_t curtime = tv;
   cerr << "FilterNeighbor:\t" << flush;
 
   //??? notice (1) to avoid removing m_fix=1
@@ -536,7 +536,7 @@ void Cfilter::filterNeighbor(const int times) {
     for (int j = 0; j < jtmp; ++j)
       m_fm.m_jobs.push_back(j);
     
-    pthread_t threads[m_fm.m_CPU];
+    std::vector<pthread_t> threads(m_fm.m_CPU);
     for (int i = 0; i < m_fm.m_CPU; ++i)
       pthread_create(&threads[i], NULL, filterNeighborThreadTmp, (void*)this);
     for (int i = 0; i < m_fm.m_CPU; ++i)
@@ -560,16 +560,16 @@ void Cfilter::filterNeighbor(const int times) {
   cerr << (int)m_fm.m_pos.m_ppatches.size() << " -> "
        << (int)m_fm.m_pos.m_ppatches.size() - count << " ("
        << 100 * ((int)m_fm.m_pos.m_ppatches.size() - count) / (float)m_fm.m_pos.m_ppatches.size()
-       << "%)\t" << tv.tv_sec - curtime << " secs" << endl;
+       << "%)\t" << tv - curtime << " secs" << endl;
 }
 
 //----------------------------------------------------------------------
 // Take out small connected components
 //----------------------------------------------------------------------
 void Cfilter::filterSmallGroups(void) {
-  struct timeval tv;
-  gettimeofday(&tv, NULL); 
-  time_t curtime = tv.tv_sec;
+	time_t tv;
+	time(&tv);
+	time_t curtime = tv;
   cerr << "FilterGroups:\t" << flush;
   m_fm.m_pos.collectPatches();
   if (m_fm.m_pos.m_ppatches.empty())
@@ -653,7 +653,7 @@ void Cfilter::filterSmallGroups(void) {
   cerr << (int)m_fm.m_pos.m_ppatches.size() << " -> "
        << (int)m_fm.m_pos.m_ppatches.size() - count << " ("
        << 100 * ((int)m_fm.m_pos.m_ppatches.size() - count) / (float)m_fm.m_pos.m_ppatches.size()
-       << "%)\t" << tv.tv_sec - curtime << " secs" << endl;
+       << "%)\t" << tv - curtime << " secs" << endl;
 }
 
 void Cfilter::filterSmallGroupsSub(const int pid, const int id,
@@ -725,7 +725,7 @@ void Cfilter::setDepthMaps(void) {
   }
   
   m_fm.m_count = 0;
-  pthread_t threads[m_fm.m_CPU];
+  std::vector<pthread_t> threads(m_fm.m_CPU);
   for (int i = 0; i < m_fm.m_CPU; ++i)
     pthread_create(&threads[i], NULL, setDepthMapsThreadTmp, (void*)this);
   for (int i = 0; i < m_fm.m_CPU; ++i)
@@ -813,14 +813,14 @@ void Cfilter::setDepthMapsVGridsVPGridsAddPatchV(const int additive) {
   }
     
   m_fm.m_count = 0;
-  pthread_t threads0[m_fm.m_CPU];
+  std::vector<pthread_t> threads0(m_fm.m_CPU);
   for (int i = 0; i < m_fm.m_CPU; ++i)
     pthread_create(&threads0[i], NULL, setVGridsVPGridsThreadTmp, (void*)this);  
   for (int i = 0; i < m_fm.m_CPU; ++i)
     pthread_join(threads0[i], NULL);
   
   m_fm.m_count = 0;
-  pthread_t threads1[m_fm.m_CPU];
+  std::vector<pthread_t> threads1(m_fm.m_CPU);;
   for (int i = 0; i < m_fm.m_CPU; ++i)
     pthread_create(&threads1[i], NULL, addPatchVThreadTmp, (void*)this);
   for (int i = 0; i < m_fm.m_CPU; ++i)

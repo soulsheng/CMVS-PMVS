@@ -40,6 +40,7 @@
     <ClCompile Include="..\..\..\base\pmvs\seed.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\base\pmvs\refineThread.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\base\pmvs\detectFeatures.h">
@@ -81,6 +82,7 @@
     <ClInclude Include="..\..\..\base\pmvs\seed.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\base\pmvs\refineThread.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
