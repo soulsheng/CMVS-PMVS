@@ -58,25 +58,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\main\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\build\main\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pmvs2.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pmvs2</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\main\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\build\main\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">pmvs2.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">pmvs2</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\main\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\build\main\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">pmvs2.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">pmvs2</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\main\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\build\main\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">pmvs2.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">pmvs2</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.exe</TargetExt>
@@ -85,7 +85,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\tinycthread;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -102,10 +102,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\tinycthread;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\tinycthread;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -129,7 +129,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\tinycthread;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Release/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -146,10 +146,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\tinycthread;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\tinycthread;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -173,7 +173,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\tinycthread;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -190,10 +190,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\tinycthread;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\tinycthread;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -217,7 +217,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\tinycthread;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -233,10 +233,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\tinycthread;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\tinycthread;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
