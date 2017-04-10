@@ -191,7 +191,7 @@ int CfindMatch::isNeighborRadius(const Patch::Cpatch& lhs,
     return 0;
 }
 
-void CfindMatch::run(void) {
+void CfindMatch::run(int expansion) {
   time_t tv;
   time(&tv); 
   time_t curtime = tv;
@@ -206,7 +206,7 @@ void CfindMatch::run(void) {
   
   //----------------------------------------------------------------------
   // Expansion
-  const int TIME = 3;
+  const int TIME = expansion;
   for (int t = 0; t < TIME; ++t) {
     m_expand.run();
 

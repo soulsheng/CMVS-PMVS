@@ -40,9 +40,20 @@ int main(int argc, char* argv[]) {
   PMVS3::Soption option;
   option.init(argv[1], argv[2]);
 
+  int  nExpansion = 3;
+  for (int i = 3; i < argc; ++i)
+  {
+	  std::string option(argv[i]);
+	  if (option == "expansion")
+	  {
+		  nExpansion = atoi(argv[i + 1]);
+		  break;
+	  }
+  }
+
   PMVS3::CfindMatch findMatch;
   findMatch.init(option);
-  findMatch.run();
+  findMatch.run(nExpansion);
 
   bool bExportPLY = true;
   bool bExportPatch = false;
