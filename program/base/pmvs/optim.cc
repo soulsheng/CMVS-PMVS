@@ -110,8 +110,12 @@ int Coptim::preProcess(Cpatch& patch, const int id, const int seed) {
   // Fix the reference image and sort the other  m_tau - 1 images.
   sortImages(patch);
 
-  // setSscales should be here to avoid noisy output
-  m_fm.m_pos.setScales(patch);
+  // Pierre Moulon (it avoid crash in some case)
+  if ((int)patch.m_images.size() > 0)
+  {
+	  // setSscales should be here to avoid noisy output
+	  m_fm.m_pos.setScales(patch);
+  }
 
   // Check minimum number of images
   if ((int)patch.m_images.size() < m_fm.m_minImageNumThreshold)

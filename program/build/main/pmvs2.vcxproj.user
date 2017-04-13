@@ -5,7 +5,7 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommandArguments>D:\file\data\3d\2017_03-5\pmvs\ option-0000</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>D:\file\data\3d\2017_03-5\pmvs\ option-0000 CPU 1</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

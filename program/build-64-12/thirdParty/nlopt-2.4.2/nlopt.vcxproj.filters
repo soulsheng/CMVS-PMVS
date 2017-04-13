@@ -1,230 +1,227 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct\DIRect.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\direct\DIRect.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct\direct_wrap.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\direct\direct_wrap.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct\DIRserial.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\direct\DIRserial.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct\DIRsubrout.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\direct\DIRsubrout.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cdirect\cdirect.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\cdirect\cdirect.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cdirect\hybrid.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\cdirect\hybrid.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\praxis\praxis.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\praxis\praxis.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\plis.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\plis.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\plip.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\plip.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\pnet.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\pnet.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\mssubs.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\mssubs.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\pssubs.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\pssubs.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\crs\crs.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\crs\crs.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mlsl\mlsl.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\mlsl\mlsl.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mma\mma.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\mma\mma.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mma\ccsa_quadratic.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\mma\ccsa_quadratic.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cobyla\cobyla.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\cobyla\cobyla.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\newuoa\newuoa.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\newuoa\newuoa.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\neldermead\nldrmd.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\neldermead\nldrmd.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\neldermead\sbplx.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\neldermead\sbplx.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\auglag\auglag.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\auglag\auglag.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\bobyqa\bobyqa.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\bobyqa\bobyqa.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\isres\isres.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\isres\isres.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\slsqp\slsqp.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\slsqp\slsqp.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\esch\esch.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\esch\esch.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\general.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\general.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\options.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\options.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\optimize.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\optimize.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\deprecated.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\deprecated.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\f77api.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\api\f77api.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\mt19937ar.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\mt19937ar.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\sobolseq.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\sobolseq.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\timer.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\timer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\stop.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\stop.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\redblack.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\redblack.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\qsort_r.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\qsort_r.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\rescale.c">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\util\rescale.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\global.cc">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\global.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\linalg.cc">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\linalg.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\local.cc">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\local.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\stogo.cc">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\stogo.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\tools.cc">
+    <ClCompile Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\tools.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct\direct-internal.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\direct\direct-internal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\direct\direct.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\direct\direct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cdirect\cdirect.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\cdirect\cdirect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\praxis\praxis.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\praxis\praxis.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\luksan\luksan.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\luksan\luksan.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\crs\crs.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\crs\crs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mlsl\mlsl.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\mlsl\mlsl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\mma\mma.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\mma\mma.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\cobyla\cobyla.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\cobyla\cobyla.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\newuoa\newuoa.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\newuoa\newuoa.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\neldermead\neldermead.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\neldermead\neldermead.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\auglag\auglag.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\auglag\auglag.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\bobyqa\bobyqa.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\bobyqa\bobyqa.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\isres\isres.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\isres\isres.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\slsqp\slsqp.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\slsqp\slsqp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\esch\esch.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\esch\esch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\nlopt-internal.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\api\nlopt-internal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\nlopt.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\api\nlopt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\f77funcs.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\api\f77funcs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\f77funcs_.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\api\f77funcs_.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\nlopt.hpp">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\api\nlopt.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api\nlopt-in.hpp">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\api\nlopt-in.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\soboldata.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\util\soboldata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\nlopt-util.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\util\nlopt-util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\util\redblack.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\util\redblack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\global.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\global.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\linalg.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\linalg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\local.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\local.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\stogo_config.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\stogo_config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\stogo.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\stogo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\stogo\tools.h">
+    <ClInclude Include="..\..\..\thirdParty\nlopt-2.4.2\stogo\tools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
