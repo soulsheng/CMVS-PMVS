@@ -1678,16 +1678,13 @@ void Coptim::normalize(std::vector<float>& tex) {
 float Coptim::dot(const std::vector<float>& tex0,
 		  const std::vector<float>& tex1) const{
 #ifndef PMVS_WNCC
-  const int size = (int)tex0.size();
-  vector<float>::const_iterator i0 = tex0.begin() - 1;
-  vector<float>::const_iterator i1 = tex1.begin() - 1;
-  float ans = 0.0f;
-  vector<float>::const_iterator end0 = tex0.end() - 1;
-  while (i0 != end0) {
-    ans += (*(++i0)) * (*(++i1));
-  }
-  
-  return ans / size;
+	// Pierre Moulon (use classic access to array, windows STL do not like begin()-1)
+	const int size = (int)tex0.size();
+	float ans = 0.0f;
+	for (int i = 0; i < size; ++i) {
+		ans += tex0[i] * tex1[i];
+	}
+	return ans / size;
 #else
   const int size = (int)tex0.size();
   vector<float>::const_iterator i0 = tex0.begin();
@@ -1705,17 +1702,13 @@ float Coptim::ssd(const std::vector<float>& tex0,
   const float scale = 0.01;
 
 #ifndef PMVS_WNCC
+  // Pierre Moulon (use classic access to array, windows STL do not like begin()-1)
   const int size = (int)tex0.size();
-  vector<float>::const_iterator i0 = tex0.begin() - 1;
-  vector<float>::const_iterator i1 = tex1.begin() - 1;
   float ans = 0.0f;
-  vector<float>::const_iterator end0 = tex0.end() - 1;
-  while (i0 != end0) {
-    const float ftmp = fabs((*(++i0)) - (*(++i1)));
-    //ans += (*(++i0)) * (*(++i1));
-    ans += ftmp;
+  for (int i = 0; i < size; ++i) {
+	  ans += fabs(tex0[i] - tex1[i]);
   }
-  
+
   return scale * ans / size;
 #else
   const int size = (int)tex0.size();
