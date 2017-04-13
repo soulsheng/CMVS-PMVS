@@ -5,6 +5,8 @@
 #include <vector>
 #include <map>
 
+#define M_PI	3.1415926
+
 namespace PMVS3 {
   
 struct Soption{

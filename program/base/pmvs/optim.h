@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "patch.h"
-#include <gsl/gsl_multimin.h>
+//#include <gsl/gsl_multimin.h>
 #include <CL/cl_platform.h>
 
 namespace PMVS3 {
@@ -41,11 +41,14 @@ class Coptim {
   void setPatchParams(Patch::Cpatch& patch, int id, CLPatchParams &patchParams, cl_float4 &encodedVec);
   void refinePatch(Patch::Cpatch& patch, const int id, const int time);
   
-  void refinePatchBFGS(Patch::Cpatch& patch, const int id, const int time);
+  bool refinePatchBFGS(Patch::Cpatch& patch, const int id, const int time,
+	  const int ncc);
+#if 0
   void refinePatchBFGS(Patch::Cpatch& patch, const int id, const int time,
                        const int ncc);
   void refineDepthBFGS(Patch::Cpatch& patch, const int id, const int time,
                        const int ncc);
+#endif
   void finishRefine(Patch::Cpatch &patch, int id, cl_float4 encodedVec, int status);
   
   int postProcess(Patch::Cpatch& patch, const int id, const int seed);
@@ -109,6 +112,9 @@ class Coptim {
   void func(int m, int n, double* x, double* fvec, int* iflag, void* arg);
 
   //BFGS
+#if 1
+  static double my_f(unsigned n, const double *x, double *grad, void *my_func_data);
+#else
   static double my_f(const gsl_vector *v, void *params);
   static void my_df(const gsl_vector *v, void *params,
                     gsl_vector *df);
@@ -118,6 +124,7 @@ class Coptim {
   static double my_f0(double x, void* params);
   static double my_f1(double x, void* params);
   static double my_f2(double x, void* params);
+
   //----------------------------------------------------------------------
   // For ssd
   static double my_f_ssd(const gsl_vector *v, void *params);
@@ -138,7 +145,7 @@ class Coptim {
                      double *f, gsl_vector *df);
   // for derivative computation
   static double my_f0_depth(double x, void* params);
-  
+#endif
   void encode(const Vec4f& coord,
               double* const vect, const int id) const;
   void encode(const Vec4f& coord, const Vec4f& normal,

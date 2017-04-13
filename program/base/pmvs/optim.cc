@@ -1,10 +1,14 @@
+#define _USE_MATH_DEFINES
+#include <cmath>
+
 #include <algorithm>
 #include <numeric>
 //#include <levmar/lm.h>
-#include <gsl/gsl_deriv.h>
+//#include <gsl/gsl_deriv.h>
 #include <fstream>
 #include "findMatch.h"
 #include "optim.h"
+#include "nlopt.hpp"
 
 using namespace Patch;
 using namespace PMVS3;
@@ -593,6 +597,83 @@ void Coptim::refinePatch(Cpatch& patch, const int id,
 //----------------------------------------------------------------------
 // BFGS functions
 //----------------------------------------------------------------------
+#if 1
+double Coptim::my_f(unsigned n, const double *x, double *grad, void *my_func_data)
+{
+	double xs[3] = {x[0], x[1], x[2]};
+	const int id = *((int*)my_func_data);
+
+	const float angle1 = xs[1] * m_one->m_ascalesT[id];
+	const float angle2 = xs[2] * m_one->m_ascalesT[id];
+
+	double ret = 0.0;
+
+	//?????
+	const double bias = 0.0f;//2.0 - exp(- angle1 * angle1 / sigma2) - exp(- angle2 * angle2 / sigma2);
+
+	Vec4f coord, normal;
+	m_one->decode(coord, normal, xs, id);
+
+	const int index = m_one->m_indexesT[id][0];
+	Vec4f pxaxis, pyaxis;
+	m_one->getPAxes(index, coord, normal, pxaxis, pyaxis);
+
+	const int size = min(m_one->m_fm.m_tau, (int)m_one->m_indexesT[id].size());
+	const int mininum = min(m_one->m_fm.m_minImageNumThreshold, size);
+
+	for (int i = 0; i < size; ++i) {
+		int flag;
+		flag = m_one->grabTex(coord, pxaxis, pyaxis, normal, m_one->m_indexesT[id][i],
+			m_one->m_fm.m_wsize, m_one->m_texsT[id][i]);
+
+		if (flag == 0)
+			m_one->normalize(m_one->m_texsT[id][i]);
+	}
+
+	const int pairwise = 0;
+	if (pairwise) {
+		double ans = 0.0f;
+		int denom = 0;
+		for (int i = 0; i < size; ++i) {
+			for (int j = i+1; j < size; ++j) {
+				if (m_one->m_texsT[id][i].empty() || m_one->m_texsT[id][j].empty())
+					continue;
+
+				ans += robustincc(1.0 - m_one->dot(m_one->m_texsT[id][i], m_one->m_texsT[id][j]));
+				denom++;
+			}
+		}
+		if (denom <
+			//m_one->m_fm.m_minImageNumThreshold *
+			//(m_one->m_fm.m_minImageNumThreshold - 1) / 2)
+			mininum * (mininum - 1) / 2)
+			ret = 2.0f;
+		else
+			ret = ans / denom + bias;
+	}
+	else {
+		if (m_one->m_texsT[id][0].empty())
+			return 2.0;
+
+		double ans = 0.0f;
+		int denom = 0;
+		for (int i = 1; i < size; ++i) {
+			if (m_one->m_texsT[id][i].empty())
+				continue;
+			ans +=
+				robustincc(1.0 - m_one->dot(m_one->m_texsT[id][0], m_one->m_texsT[id][i]));
+			denom++;
+		}
+		//if (denom < m_one->m_fm.m_minImageNumThreshold - 1)
+		if (denom < mininum - 1)
+			ret = 2.0f;
+		else
+			ret = ans / denom + bias;
+	}
+
+	return ret;
+}
+#else
 double Coptim::my_f(const gsl_vector *v, void *params) {
   double xs[3] = {gsl_vector_get(v, 0),
                   gsl_vector_get(v, 1),
@@ -1076,85 +1157,93 @@ double Coptim::my_f0_depth(double x, void* params) {
   
   return score;
 }
-
-void Coptim::refinePatchBFGS(Cpatch& patch, const int id,
+#endif
+bool Coptim::refinePatchBFGS(Cpatch& patch, const int id,
                              const int time, const int ncc) {
-  int status;
-  const gsl_multimin_fminimizer_type *T;
-  gsl_multimin_fminimizer *s;
-  
-  gsl_multimin_function my_func;
   int idtmp = id;
-  my_func.n = 3;
-  
-  if (ncc)
-    my_func.f = &my_f;
-  else
-    my_func.f = &my_f_ssd;
-  my_func.params = (void *)&idtmp;
-  
+
   m_centersT[id] = patch.m_coord;
-  m_raysT[id] = patch.m_coord -
-    m_fm.m_pss.m_photos[patch.m_images[0]].m_center;
+  m_raysT[id] = patch.m_coord - m_fm.m_pss.m_photos[patch.m_images[0]].m_center;
   unitize(m_raysT[id]);
   m_indexesT[id] = patch.m_images;
-  
+
   m_dscalesT[id] = patch.m_dscale;
   m_ascalesT[id] = M_PI / 48.0f;//patch.m_ascale;
-  
+
   computeUnits(patch, m_weightsT[id]);
   for (int i = 1; i < (int)m_weightsT[id].size(); ++i)
-    m_weightsT[id][i] = min(1.0f, m_weightsT[id][0] / m_weightsT[id][i]);  
+	  m_weightsT[id][i] = min(1.0f, m_weightsT[id][0] / m_weightsT[id][i]);
   m_weightsT[id][0] = 1.0f;
-  
+
   double p[3];
   encode(patch.m_coord, patch.m_normal, p, id);
-  
-  gsl_vector* x = gsl_vector_alloc (3);
-  gsl_vector_set(x, 0, p[0]);
-  gsl_vector_set(x, 1, p[1]);
-  gsl_vector_set(x, 2, p[2]);
-  
-  gsl_vector* ss = gsl_vector_alloc (3);
-  gsl_vector_set_all(ss, 1.0);
-  
-  T = gsl_multimin_fminimizer_nmsimplex;
-  s = gsl_multimin_fminimizer_alloc (T, 3);
-  gsl_multimin_fminimizer_set (s, &my_func, x, ss);
-  
-  int iter = 0;
-  do {
-    ++iter;
-    status = gsl_multimin_fminimizer_iterate (s);
-    
-    if (status)
-      break;
-    
-    double size = gsl_multimin_fminimizer_size(s);
-    //status = gsl_multimin_test_size (size, 1e-2);
-    status = gsl_multimin_test_size (size, 1e-3);
-  } while (status == GSL_CONTINUE && iter < time);
-  //printf("init val %d %lf %lf %lf\n", id, p[0], p[1], p[2]);
-  p[0] = gsl_vector_get(s->x, 0);
-  p[1] = gsl_vector_get(s->x, 1);
-  p[2] = gsl_vector_get(s->x, 2);
-  
-  if (status == GSL_SUCCESS) {
-    //printf("refined val %d %lf %lf %lf\n", id, p[0], p[1], p[2]);
-    decode(patch.m_coord, patch.m_normal, p, id);
-    
-    patch.m_ncc = 1.0 -
-      unrobustincc(computeINCC(patch.m_coord,
-                               patch.m_normal, patch.m_images, id, 1));
+
+  double min_angle = -23.99999;	//(- M_PI / 2.0) / m_one->m_ascalesT[id];
+  double max_angle = 23.99999;	//(M_PI / 2.0) / m_one->m_ascalesT[id];
+
+  std::vector<double> lower_bounds(3);
+  lower_bounds[0] = -HUGE_VAL;		// Not bound
+  lower_bounds[1] = min_angle;
+  lower_bounds[2] = min_angle;
+  std::vector<double> upper_bounds(3);
+  upper_bounds[0] = HUGE_VAL;		// Not bound
+  upper_bounds[1] = max_angle;
+  upper_bounds[2] = max_angle;
+
+  bool success = false;
+
+  try
+  {
+	  // LN_NELDERMEAD: Corresponds to the N-Simplex-Algorithm of GSL, that was used originally here
+	  // LN_SBPLX
+	  // LN_COBYLA
+	  // LN_BOBYQA
+	  // LN_PRAXIS
+	  nlopt::opt opt(nlopt::LN_BOBYQA, 3);
+	  opt.set_min_objective(my_f, &idtmp);
+	  opt.set_xtol_rel(1.e-7);
+	  opt.set_maxeval(time);
+
+	  opt.set_lower_bounds(lower_bounds);
+	  opt.set_upper_bounds(upper_bounds);
+
+	  std::vector<double> x(3);
+	  for (int i = 0; i < 3; i++)
+	  {
+		  // NLOPT returns an error if x is not within the bounds
+		  x[i] = max(min(p[i], upper_bounds[i]), lower_bounds[i]);
+	  }
+
+	  double minf;
+	  nlopt::result result = opt.optimize(x, minf);
+
+	  p[0] = x[0];
+	  p[1] = x[1];
+	  p[2] = x[2];
+
+	  success = (result == nlopt::SUCCESS
+		  || result == nlopt::STOPVAL_REACHED
+		  || result == nlopt::FTOL_REACHED
+		  || result == nlopt::XTOL_REACHED);
   }
-  else
-    patch.m_images.clear();   
-  
-  ++m_status[status + 2];
-  
-  gsl_multimin_fminimizer_free (s);
-  gsl_vector_free (x);
-  gsl_vector_free (ss);
+  catch (std::exception &e)
+  {
+	  success = false;
+  }
+
+  if (success) {
+	  decode(patch.m_coord, patch.m_normal, p, id);
+
+	  patch.m_ncc = 1.0 -
+		  unrobustincc(computeINCC(patch.m_coord,
+		  patch.m_normal, patch.m_images, id, 1));
+
+  }
+  else {
+	  return false;
+  }
+
+  return true;
 }
 
 void Coptim::finishRefine(Cpatch &patch, int id, cl_float4 encodedVec, int status) {
