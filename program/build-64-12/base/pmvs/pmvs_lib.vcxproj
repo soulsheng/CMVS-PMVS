@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{9BC52AFB-57DF-35FF-AEBB-C45FDAEE2AAC}</ProjectGUID>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>pmvs_lib</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\build-64-12\base\pmvs\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pmvs_lib.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pmvs_lib</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\build-64-12\base\pmvs\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pmvs_lib.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pmvs_lib</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">..\..\..\build-64-12\base\pmvs\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">pmvs_lib.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">pmvs_lib</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">..\..\..\build-64-12\base\pmvs\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">pmvs_lib.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">pmvs_lib</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\base\pmvs\detectFeatures.h" />
+    <ClInclude Include="..\..\..\base\pmvs\detector.h" />
+    <ClInclude Include="..\..\..\base\pmvs\dog.h" />
+    <ClInclude Include="..\..\..\base\pmvs\expand.h" />
+    <ClInclude Include="..\..\..\base\pmvs\filter.h" />
+    <ClInclude Include="..\..\..\base\pmvs\findMatch.h" />
+    <ClInclude Include="..\..\..\base\pmvs\harris.h" />
+    <ClInclude Include="..\..\..\base\pmvs\optim.h" />
+    <ClInclude Include="..\..\..\base\pmvs\option.h" />
+    <ClInclude Include="..\..\..\base\pmvs\patch.h" />
+    <ClInclude Include="..\..\..\base\pmvs\patchOrganizerS.h" />
+    <ClInclude Include="..\..\..\base\pmvs\point.h" />
+    <ClInclude Include="..\..\..\base\pmvs\seed.h" />
+    <ClCompile Include="..\..\..\base\pmvs\detectFeatures.cc" />
+    <ClCompile Include="..\..\..\base\pmvs\detector.cc" />
+    <ClCompile Include="..\..\..\base\pmvs\dog.cc" />
+    <ClCompile Include="..\..\..\base\pmvs\expand.cc" />
+    <ClCompile Include="..\..\..\base\pmvs\filter.cc" />
+    <ClCompile Include="..\..\..\base\pmvs\findMatch.cc" />
+    <ClCompile Include="..\..\..\base\pmvs\harris.cc" />
+    <ClCompile Include="..\..\..\base\pmvs\optim.cc" />
+    <ClCompile Include="..\..\..\base\pmvs\option.cc" />
+    <ClCompile Include="..\..\..\base\pmvs\patch.cc" />
+    <ClCompile Include="..\..\..\base\pmvs\patchOrganizerS.cc" />
+    <ClCompile Include="..\..\..\base\pmvs\point.cc" />
+    <ClCompile Include="..\..\..\base\pmvs\seed.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:/file/code/git/3d/CMVS-PMVS/program/build-64-12/ZERO_CHECK.vcxproj">
+      <Project>2ED88A48-6190-39B8-8C26-BBC5BAA5B50B</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
