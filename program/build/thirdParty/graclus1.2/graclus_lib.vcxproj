@@ -77,7 +77,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\tinycthread;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\jpeg-ijg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsC</CompileAs>

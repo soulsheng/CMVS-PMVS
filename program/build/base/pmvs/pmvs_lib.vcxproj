@@ -77,7 +77,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\pthread\include;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include;..\..\thirdParty\gsl-1.13\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\pthread\include;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include;..\..\..\thirdParty\graclus1.13\include;..\..\..\thirdParty\gsl-1.13\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -107,7 +107,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\pthread\include;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include;..\..\..\thirdParty\graclus1.13\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\pthread\include;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include;..\..\..\thirdParty\graclus1.13\include;..\..\..\thirdParty\gsl-1.13\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Release/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>

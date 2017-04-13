@@ -85,7 +85,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\pthread\include;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\jpeg-ijg\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include;D:\file\code\sdk\GnuWin32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\pthread\include;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\jpeg-ijg\include;$(CUDA_PATH)\include;D:\file\code\sdk\GnuWin32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -115,7 +115,7 @@
     <Link>
       <AdditionalOptions> /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\base\pmvs\Debug\pmvs_lib.lib;..\base\image\Debug\image_lib.lib;..\base\numeric\Debug\numeric_lib.lib;jpeg.lib;..\thirdParty\nlopt-2.4.2\Debug\nlopt.lib;..\thirdParty\tinycthread\Debug\tinycthread.lib;OpenCL.lib;pthread.lib;libgsl.lib;libgslcblas.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\lib\Win32;D:\file\code\sdk\jpeg-ijg\lib\Win32\$(Configuration);..\..\thirdParty;D:\file\code\sdk\GnuWin32\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\file\code\sdk\jpeg-ijg\lib\$(Platform)\$(Configuration);$(CUDA_PATH)\lib\$(Platform);..\..\thirdParty;D:\file\code\sdk\GnuWin32\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ImportLibrary>D:/file/code/git/3d/CMVS-PMVS/program/build/main/Debug/pmvs2.lib</ImportLibrary>
       <ProgramDataBaseFile>D:/file/code/git/3d/CMVS-PMVS/program/build/main/Debug/pmvs2.pdb</ProgramDataBaseFile>
@@ -131,7 +131,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\tinycthread;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\program\base\image;..\..\program\base\numeric;..\..\program\base\pmvs;..\..\thirdParty;..\..\thirdParty\graclus1.2\metisLib;..\..\thirdParty\nlopt-2.4.2\api;..\..\thirdParty\cimg;..\..\thirdParty\pthread\include;..\..\thirdParty\Eigen;..\..\thirdParty\miniBoost;D:\file\code\sdk\jpeg-ijg\include;$(CUDA_PATH)\include;D:\file\code\sdk\GnuWin32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Release/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -160,8 +160,8 @@
     </Midl>
     <Link>
       <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\base\pmvs\Release\pmvs_lib.lib;..\base\image\Release\image_lib.lib;..\base\numeric\Release\numeric_lib.lib;D:\file\code\sdk\external\jpeg-6b\lib\jpeg.lib;..\thirdParty\nlopt-2.4.2\Release\nlopt.lib;..\thirdParty\tinycthread\Release\tinycthread.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\base\pmvs\Release\pmvs_lib.lib;..\base\image\Release\image_lib.lib;..\base\numeric\Release\numeric_lib.lib;jpeg.lib;..\thirdParty\nlopt-2.4.2\Release\nlopt.lib;..\thirdParty\tinycthread\Release\tinycthread.lib;pthread.lib;opencl.lib;libgsl.lib;libgslcblas.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\file\code\sdk\jpeg-ijg\lib\$(Platform)\$(Configuration);$(CUDA_PATH)\lib\$(Platform);..\..\thirdParty;D:\file\code\sdk\GnuWin32\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ImportLibrary>D:/file/code/git/3d/CMVS-PMVS/program/build/main/Release/pmvs2.lib</ImportLibrary>
       <ProgramDataBaseFile>D:/file/code/git/3d/CMVS-PMVS/program/build/main/Release/pmvs2.pdb</ProgramDataBaseFile>
