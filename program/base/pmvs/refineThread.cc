@@ -4,6 +4,37 @@
 
 using namespace PMVS3;
 
+#define OPENCL_DEVICE_CPU	0// OpenCL Éè±¸¡ª¡ª 1:CPU / 0:GPU
+
+#if OPENCL_DEVICE_CPU
+#define NAME_STRING_PLATFORM	"Intel(R) OpenCL"
+#else 
+#define NAME_STRING_PLATFORM	"NVIDIA CUDA"
+#endif
+
+cl_platform_id SelectOpenCLPlatform()
+{
+	cl_platform_id pPlatforms[10] = { 0 };
+	char pPlatformName[128] = { 0 };
+
+	cl_uint uiPlatformsCount = 0;
+	cl_int err = clGetPlatformIDs(10, pPlatforms, &uiPlatformsCount);
+	for (cl_uint ui = 0; ui < uiPlatformsCount; ++ui)
+	{
+		err = clGetPlatformInfo(pPlatforms[ui], CL_PLATFORM_NAME, 128 * sizeof(char), pPlatformName, NULL);
+		if (err != CL_SUCCESS)
+		{
+			printf("ERROR: Failed to retreive platform vendor name.\n", ui);
+			return NULL;
+		}
+
+		if (!strcmp(pPlatformName, NAME_STRING_PLATFORM))
+			return pPlatforms[ui];
+	}
+
+	return NULL;
+}
+
 CrefineThread::CrefineThread(int numPostProcessThreads, CasyncQueue<RefineWorkItem> &postProcessQueue, CfindMatch &findMatch) : 
         m_workQueue(REFINE_QUEUE_LENGTH),
         m_postProcessQueue(postProcessQueue),
@@ -45,7 +76,11 @@ void CrefineThread::initCL() {
     cl_int cl_err;
     cl_platform_id platforms[1];
     cl_device_id devices[1];
+#if 0
     clGetPlatformIDs(1, platforms, &numPlatforms);
+#else
+	platforms[0] = SelectOpenCLPlatform();
+#endif
     const cl_context_properties cl_props[3] = {CL_CONTEXT_PLATFORM, (cl_context_properties)platforms[0], 0};
     clGetDeviceIDs(platforms[0], CL_DEVICE_TYPE_GPU, 1, devices, &numDevices);
     m_clCtx = clCreateContext(cl_props, 1, devices, NULL, NULL, &cl_err);
