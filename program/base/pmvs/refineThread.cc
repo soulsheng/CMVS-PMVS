@@ -279,11 +279,11 @@ void CrefineThread::refinePatchesGPU() {
   clErr = clEnqueueNDRangeKernel(m_clQueue, m_clKernel, 1, 
           &globalWorkOffset, &globalWorkSize, NULL,
           0, NULL, NULL);
-  if(clErr < 0) {
+  if(clErr < 0) { 
       printf("error launching kernel %d\n", clErr);
   }
   clErr = clEnqueueReadBuffer(m_clQueue, m_clEncodedVecs, CL_TRUE, 0, REFINE_MAX_TASKS*sizeof(cl_float4), m_encodedVecs, 0, NULL, NULL);
-  if(clErr < 0) {
+  if(clErr < 0) { 
       printf("error reading encoded vecs %d\n", clErr);
   }
 
