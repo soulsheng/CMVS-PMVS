@@ -58,11 +58,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\graclus1.2\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">graclus_lib.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">graclus_lib</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\file\code\git\3d\CMVS-PMVS\program\build\thirdParty\graclus1.2\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">graclus_lib.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">graclus_lib</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
@@ -77,7 +77,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\jpeg-ijg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsC</CompileAs>
@@ -107,7 +107,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS\program\thirdParty\miniBoost;D:\file\code\sdk\external\jpeg-6b\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\program\base\image;..\..\..\program\base\numeric;..\..\..\program\base\pmvs;..\..\..\thirdParty;..\..\..\thirdParty\graclus1.2\metisLib;..\..\..\thirdParty\nlopt-2.4.2\api;..\..\..\thirdParty\cimg;..\..\..\thirdParty\tinycthread;..\..\..\thirdParty\Eigen;..\..\..\thirdParty\miniBoost;D:\file\code\sdk\jpeg-ijg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Release/</AssemblerListingLocation>
       <CompileAs>CompileAsC</CompileAs>
       <ExceptionHandling>
