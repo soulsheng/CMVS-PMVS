@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{65892F9D-5146-3812-9569-0C880A293C28}</ProjectGUID>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>pmvs2</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+    <PropertyGroup>
+      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\main\Debug\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pmvs2.dir\Debug\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pmvs2</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\main\Release\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">pmvs2.dir\Release\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">pmvs2</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\main\MinSizeRel\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">pmvs2.dir\MinSizeRel\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">pmvs2</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.exe</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\main\RelWithDebInfo\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">pmvs2.dir\RelWithDebInfo\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">pmvs2</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.exe</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+    </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\miniBoost;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\jpeg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\thirdParty\jpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\miniBoost;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\jpeg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\thirdParty\jpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\miniBoost;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\jpeg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\thirdParty\jpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\base\pmvs\Debug\pmvs_lib.lib;..\base\image\Debug\image_lib.lib;..\base\numeric\Debug\numeric_lib.lib;..\thirdParty\jpeg\Debug\jpeg.lib;..\thirdParty\nlopt-2.4.2\Debug\nlopt.lib;..\thirdParty\tinycthread\Debug\tinycthread.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/main/Debug/pmvs2.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/main/Debug/pmvs2.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\miniBoost;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\jpeg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\thirdParty\jpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat></DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\miniBoost;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\jpeg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\thirdParty\jpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\miniBoost;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\jpeg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\thirdParty\jpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\base\pmvs\Release\pmvs_lib.lib;..\base\image\Release\image_lib.lib;..\base\numeric\Release\numeric_lib.lib;..\thirdParty\jpeg\Release\jpeg.lib;..\thirdParty\nlopt-2.4.2\Release\nlopt.lib;..\thirdParty\tinycthread\Release\tinycthread.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/main/Release/pmvs2.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/main/Release/pmvs2.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\miniBoost;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\jpeg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\thirdParty\jpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat></DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\miniBoost;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\jpeg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\thirdParty\jpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\miniBoost;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\jpeg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\thirdParty\jpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\base\pmvs\MinSizeRel\pmvs_lib.lib;..\base\image\MinSizeRel\image_lib.lib;..\base\numeric\MinSizeRel\numeric_lib.lib;..\thirdParty\jpeg\MinSizeRel\jpeg.lib;..\thirdParty\nlopt-2.4.2\MinSizeRel\nlopt.lib;..\thirdParty\tinycthread\MinSizeRel\tinycthread.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/main/MinSizeRel/pmvs2.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/main/MinSizeRel/pmvs2.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\miniBoost;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\jpeg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\thirdParty\jpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\miniBoost;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\jpeg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\thirdParty\jpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\image;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\numeric;D:\file\code\git\3d\CMVS-PMVS-gpu\program\program\base\pmvs;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\graclus1.2\metisLib;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\nlopt-2.4.2\api;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\cimg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\tinycthread;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\Eigen;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\miniBoost;D:\file\code\git\3d\CMVS-PMVS-gpu\program\thirdParty\jpeg;D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\thirdParty\jpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\base\pmvs\RelWithDebInfo\pmvs_lib.lib;..\base\image\RelWithDebInfo\image_lib.lib;..\base\numeric\RelWithDebInfo\numeric_lib.lib;..\thirdParty\jpeg\RelWithDebInfo\jpeg.lib;..\thirdParty\nlopt-2.4.2\RelWithDebInfo\nlopt.lib;..\thirdParty\tinycthread\RelWithDebInfo\tinycthread.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/main/RelWithDebInfo/pmvs2.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/main/RelWithDebInfo/pmvs2.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\main\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule D:/file/code/git/3d/CMVS-PMVS-gpu/program/main/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HD:/file/code/git/3d/CMVS-PMVS-gpu/program -BD:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10 --check-stamp-file D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\main\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:/file/code/git/3d/CMVS-PMVS-gpu/program/main/CMakeLists.txt;D:\file\code\git\3d\CMVS-PMVS-gpu\program\main\CMakeLists.txt;D:\file\code\git\3d\CMVS-PMVS-gpu\program\main\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\main\CMakeFiles\generate.stamp</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule D:/file/code/git/3d/CMVS-PMVS-gpu/program/main/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HD:/file/code/git/3d/CMVS-PMVS-gpu/program -BD:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10 --check-stamp-file D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\main\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:/file/code/git/3d/CMVS-PMVS-gpu/program/main/CMakeLists.txt;D:\file\code\git\3d\CMVS-PMVS-gpu\program\main\CMakeLists.txt;D:\file\code\git\3d\CMVS-PMVS-gpu\program\main\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\main\CMakeFiles\generate.stamp</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule D:/file/code/git/3d/CMVS-PMVS-gpu/program/main/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HD:/file/code/git/3d/CMVS-PMVS-gpu/program -BD:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10 --check-stamp-file D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\main\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:/file/code/git/3d/CMVS-PMVS-gpu/program/main/CMakeLists.txt;D:\file\code\git\3d\CMVS-PMVS-gpu\program\main\CMakeLists.txt;D:\file\code\git\3d\CMVS-PMVS-gpu\program\main\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\main\CMakeFiles\generate.stamp</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule D:/file/code/git/3d/CMVS-PMVS-gpu/program/main/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HD:/file/code/git/3d/CMVS-PMVS-gpu/program -BD:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10 --check-stamp-file D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\main\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:/file/code/git/3d/CMVS-PMVS-gpu/program/main/CMakeLists.txt;D:\file\code\git\3d\CMVS-PMVS-gpu\program\main\CMakeLists.txt;D:\file\code\git\3d\CMVS-PMVS-gpu\program\main\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\file\code\git\3d\CMVS-PMVS-gpu\program\build-32-10\main\CMakeFiles\generate.stamp</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\main\pmvs2.cc"  />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/ZERO_CHECK.vcxproj">
+      <Project>3C8C16EC-A60D-3DAD-9E16-B612EC7DB31E</Project>
+    </ProjectReference>
+    <ProjectReference Include="D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/base/image/image_lib.vcxproj">
+      <Project>A360E326-A712-3DEA-878B-49D19DACE5B1</Project>
+    </ProjectReference>
+    <ProjectReference Include="D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/thirdParty/jpeg/jpeg.vcxproj">
+      <Project>56D4548C-2815-3564-BD3A-8D175874117C</Project>
+    </ProjectReference>
+    <ProjectReference Include="D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/thirdParty/nlopt-2.4.2/nlopt.vcxproj">
+      <Project>19898727-3564-3321-BB01-9F0A98190DDB</Project>
+    </ProjectReference>
+    <ProjectReference Include="D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/base/numeric/numeric_lib.vcxproj">
+      <Project>047EB441-52A0-3D11-B47E-CD8CE28BF296</Project>
+    </ProjectReference>
+    <ProjectReference Include="D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/base/pmvs/pmvs_lib.vcxproj">
+      <Project>28A7F94D-8B9A-34E2-8CBD-C4C3610B6D9F</Project>
+    </ProjectReference>
+    <ProjectReference Include="D:/file/code/git/3d/CMVS-PMVS-gpu/program/build-32-10/thirdParty/tinycthread/tinycthread.vcxproj">
+      <Project>CF114B83-F7B2-33C0-B53B-0045E90C832B</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
