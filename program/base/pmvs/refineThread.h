@@ -18,7 +18,7 @@ namespace PMVS3 {
         REFINE_SUCCESS
     };
 
-#define REFINE_MAX_TASKS 1024
+#define REFINE_MAX_TASKS 16
 #define REFINE_QUEUE_LENGTH 1400
 
     typedef struct _CLImageParams {

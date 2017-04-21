@@ -98,6 +98,8 @@ void Soption::init(const std::string prefix, const std::string option) {
   }
   ifstr.close();
 
+  m_CPU = 1;
+
   if (m_tflag == -10 || m_oflag == -10) {
     cerr << "m_tflag and m_oflag not specified: "
          << m_tflag << ' ' << m_oflag << endl;
