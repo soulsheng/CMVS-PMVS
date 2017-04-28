@@ -50,6 +50,9 @@ class Cexpand {
   std::vector<int> m_fcounts1;
   // Number passes
   std::vector<int> m_pcounts;
+
+  int		m_totalTimeKernel;	// total time of kernel
+
 };
 };
 

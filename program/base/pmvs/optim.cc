@@ -20,6 +20,9 @@ Coptim::Coptim(CfindMatch& findMatch) : m_fm(findMatch) {
   
   m_status.resize(35);
   fill(m_status.begin(), m_status.end(), 0);  
+
+  m_totalTimeKernel = 0;
+  m_totalCountKernel = 0;
 }
 
 void Coptim::init(void) {
@@ -668,7 +671,12 @@ bool Coptim::refinePatchBFGS(Cpatch& patch, const int id,
     }
   
     double minf;
+
+	clock_t tv = clock();
+
     nlopt::result result = opt.optimize(x, minf);
+	m_totalTimeKernel += (clock() - tv);
+	m_totalCountKernel ++;
 
     p[0] = x[0];
     p[1] = x[1];

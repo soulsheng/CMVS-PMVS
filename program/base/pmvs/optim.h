@@ -122,7 +122,12 @@ class Coptim {
   static inline float unrobustincc(const float rhs) {
     return rhs / (1 - 3 * rhs);
   }
-  
+
+  int getTotalTimeKernel()	{ return m_totalTimeKernel; }
+  void resetTotalTimeKernel()	{ m_totalTimeKernel = 0; }
+  int getTotalCountKernel()	{ return m_totalCountKernel; }
+  void resetTotalCountKernel()	{ m_totalCountKernel = 0; }
+
  protected:
   
   void setAxesScales(void);
@@ -157,6 +162,9 @@ class Coptim {
   // Working array for levmar
   std::vector<std::vector<double> > m_worksT;
   
+  int		m_totalTimeKernel;	// total time of kernel
+  int		m_totalCountKernel;	// total count of kernel
+
 };
 };
 

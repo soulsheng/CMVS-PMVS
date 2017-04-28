@@ -214,6 +214,9 @@ void CfindMatch::run(int expansion) {
         
     updateThreshold();
 
+	m_optim.resetTotalTimeKernel();
+	m_optim.resetTotalCountKernel();
+
     cout << "STATUS: ";
     for (int i = 0; i < (int)m_optim.m_status.size(); ++i) {
       cout << m_optim.m_status[i] << ' ';

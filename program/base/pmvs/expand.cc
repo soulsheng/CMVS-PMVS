@@ -31,6 +31,7 @@ void Cexpand::run(void) {
   fill(m_fcounts1.begin(), m_fcounts1.end(), 0);
   fill(m_pcounts.begin(), m_pcounts.end(), 0);
 
+  m_totalTimeKernel = 0;
   time_t starttime = time(NULL);
 
   m_fm.m_pos.clearCounts();
@@ -67,6 +68,10 @@ void Cexpand::run(void) {
        << 100 * fail1 / (float)trial << ' '
        << 100 * (pass + fail1) / (float)trial << endl;
   
+  cerr << "---- refine cost time " << m_totalTimeKernel << " ms" << endl;
+  cerr << "---- optimize cost time " << m_fm.m_optim.getTotalTimeKernel() << " ms" << endl;
+  cerr << "---- optimize repeat " << m_fm.m_optim.getTotalCountKernel() << endl;
+
 }
 int Cexpand::expandThreadTmp(void* arg) {
   ((Cexpand*)arg)->expandThread();
@@ -241,8 +246,13 @@ int Cexpand::expandSub(const Ppatch& orgppatch, const int id,
     return 1;
   }
 
+  clock_t tv = clock();
+
   //-----------------------------------------------------------------
   m_fm.m_optim.refinePatch(patch, id, 100);
+
+  m_totalTimeKernel += (clock() - tv);
+  //cerr << "---- refinePatch: " << (clock() - tv) << " msecs ----" << endl;
 
   //-----------------------------------------------------------------
   if (m_fm.m_optim.postProcess(patch, id, 0)) {
