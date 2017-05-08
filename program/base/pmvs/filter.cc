@@ -16,7 +16,7 @@ Cfilter::Cfilter(CfindMatch& findMatch) : m_fm(findMatch) {
 void Cfilter::init(void) {
 }
 
-void Cfilter::run(void) {
+void Cfilter::run(int threshold_group) {
   setDepthMapsVGridsVPGridsAddPatchV(0);
 
   filterOutside();
@@ -28,7 +28,7 @@ void Cfilter::run(void) {
   filterNeighbor(1);
   setDepthMapsVGridsVPGridsAddPatchV(1);
   
-  filterSmallGroups();
+  filterSmallGroups(threshold_group);
   setDepthMapsVGridsVPGridsAddPatchV(1);
 }
 
@@ -567,7 +567,7 @@ void Cfilter::filterNeighbor(const int times) {
 //----------------------------------------------------------------------
 // Take out small connected components
 //----------------------------------------------------------------------
-void Cfilter::filterSmallGroups(void) {
+void Cfilter::filterSmallGroups(int threshold_group) {
   time_t tv;
   time(&tv); 
   time_t curtime = tv;
@@ -618,7 +618,7 @@ void Cfilter::filterSmallGroups(void) {
     ++bite;
   }
   
-  const int threshold = max(20, psize / 10000);
+  const int threshold = max(threshold_group, psize / 10000);
   cerr << threshold << endl;
   
   bite = size.begin();

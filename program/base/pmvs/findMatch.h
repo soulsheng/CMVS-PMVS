@@ -28,7 +28,7 @@ class CfindMatch {
   virtual ~CfindMatch();
 
   void init(const PMVS3::Soption& option);
-  void run(int expansion=3);
+  void run(int expansion = 3, int threshold_group = 20);
   void write(const std::string prefix, bool bExportPLY, bool bExportPatch, bool bExportPSet);
   
   int insideBimages(const Vec4f& coord) const;

@@ -191,7 +191,7 @@ int CfindMatch::isNeighborRadius(const Patch::Cpatch& lhs,
     return 0;
 }
 
-void CfindMatch::run(int expansion) {
+void CfindMatch::run(int expansion, int threshold_group) {
   time_t tv;
   time(&tv); 
   time_t curtime = tv;
@@ -210,7 +210,7 @@ void CfindMatch::run(int expansion) {
   for (int t = 0; t < TIME; ++t) {
     m_expand.run();
 
-    m_filter.run();
+	m_filter.run(threshold_group);
         
     updateThreshold();
 

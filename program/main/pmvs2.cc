@@ -41,6 +41,7 @@ int main(int argc, char* argv[]) {
   option.init(argv[1], argv[2]);
 
   int  nExpansion = 3;
+  int  nThresholdGroup = 20;
   for (int i = 3; i < argc; ++i)
   {
 	  std::string option(argv[i]);
@@ -49,11 +50,17 @@ int main(int argc, char* argv[]) {
 		  nExpansion = atoi(argv[i + 1]);
 		  break;
 	  }
+ 
+	  else if (option == "thresholdGroup")
+	  {
+		  nThresholdGroup = atoi(argv[i + 1]);
+		  break;
+	  }
   }
 
   PMVS3::CfindMatch findMatch;
   findMatch.init(option);
-  findMatch.run(nExpansion);
+  findMatch.run(nExpansion, nThresholdGroup);
 
   bool bExportPLY = true;
   bool bExportPatch = false;

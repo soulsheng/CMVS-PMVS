@@ -14,7 +14,7 @@ class Cfilter {
   Cfilter(CfindMatch& findMatch);
 
   void init(void);
-  void run(void);
+  void run(int threshold_group = 20);
 
   float computeGain(const Patch::Cpatch& patch, const int lock);
 
@@ -32,7 +32,7 @@ class Cfilter {
   static int filterExactThreadTmp(void* arg);
   
   void filterNeighbor(const int time);
-  void filterSmallGroups(void);
+  void filterSmallGroups(int threshold_group);
   void filterSmallGroupsSub(const int pid, const int id,
                             std::vector<int>& label,
                             std::list<int>& ltmp) const;
