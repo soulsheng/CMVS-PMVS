@@ -49,6 +49,7 @@ class Coptim {
   void refineDepthBFGS(Patch::Cpatch& patch, const int id, const int time,
                        const int ncc);
 #endif
+  bool refinePatch_kernel(double* p, const int id, const int time);
   void finishRefine(Patch::Cpatch &patch, int id, cl_float4 encodedVec, int status);
   
   int postProcess(Patch::Cpatch& patch, const int id, const int seed);

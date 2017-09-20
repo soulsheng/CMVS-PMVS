@@ -11,8 +11,10 @@ using namespace Patch;
 
 Cexpand::Cexpand(CfindMatch& findMatch) : m_fm(findMatch),
     m_idQueue(-1),
-    m_postProcessQueue(-1),
-    m_refineThread(m_fm.m_CPU, m_postProcessQueue, m_fm)
+    m_postProcessQueue(-1)
+#if USE_GPU
+    ,m_refineThread(m_fm.m_CPU, m_postProcessQueue, m_fm)
+#endif
 {
   pthread_cond_init(&m_emptyCondition, NULL);
   pthread_mutex_init(&m_queueLock, NULL);
@@ -27,7 +29,9 @@ void Cexpand::init(void) {
 }
 
 void Cexpand::run(void) {
-  m_refineThread.init();
+#if USE_GPU
+	m_refineThread.init();
+#endif
   m_fm.m_count = 0;
   m_fm.m_jobs.clear();
   m_ecounts.resize(REFINE_MAX_TASKS);
@@ -50,6 +54,9 @@ void Cexpand::run(void) {
   }
   // set queue
   m_fm.m_pos.collectPatches(m_queue);
+
+#if USE_GPU
+
   m_numPatchesInFlight = m_queue.size();
 
   cerr << "Expanding patches..." << flush;
@@ -74,6 +81,17 @@ void Cexpand::run(void) {
 
   m_idQueue.clear();
 
+#else
+
+  cerr << "Expanding patches..." << flush;
+  std::vector<pthread_t> threads(m_fm.m_CPU);
+  for (int c = 0; c < m_fm.m_CPU; ++c)
+	  pthread_create(&threads[c], NULL, &expandThreadTmp2, (void*)this);
+  for (int c = 0; c < m_fm.m_CPU; ++c)
+	  pthread_join(threads[c], NULL);
+
+#endif
+
   cerr << endl
        << "---- EXPANSION: " << (time(NULL) - starttime) << " secs ----" << endl;
 
@@ -96,6 +114,11 @@ void Cexpand::run(void) {
 void* Cexpand::expandThreadTmp(void* arg) {
   ((Cexpand*)arg)->expandThread();
   return NULL;
+}
+
+void* Cexpand::expandThreadTmp2(void* arg) {
+	((Cexpand*)arg)->expandThread2();
+	return NULL;
 }
 
 void Cexpand::expandThread(void) {
@@ -149,6 +172,41 @@ void Cexpand::expandThread(void) {
     }
     pthread_mutex_unlock(&m_queueLock);
   }
+}
+
+void Cexpand::expandThread2(void) {
+	pthread_rwlock_wrlock(&m_fm.m_lock);
+	const int id = m_fm.m_count++;
+	pthread_rwlock_unlock(&m_fm.m_lock);
+
+	while (1) {
+		Ppatch ppatch;
+		int empty = 0;
+		pthread_rwlock_wrlock(&m_fm.m_lock);
+		if (m_queue.empty())
+			empty = 1;
+		else {
+			ppatch = m_queue.top();
+			m_queue.pop();
+		}
+		pthread_rwlock_unlock(&m_fm.m_lock);
+
+		if (empty)
+			break;
+
+		// For each direction;
+		vector<vector<Vec4f> > canCoords;
+		findEmptyBlocks(ppatch, canCoords);
+
+		for (int i = 0; i < (int)canCoords.size(); ++i) {
+			for (int j = 0; j < (int)canCoords[i].size(); ++j) {
+				const int flag = expandSub(ppatch, id, canCoords[i][j]);
+				// fail
+				if (flag)
+					ppatch->m_dflag |= (0x0001) << i;
+			}
+		}
+	}
 }
 
 void Cexpand::findEmptyBlocks(const Ppatch& ppatch,
@@ -285,6 +343,8 @@ int Cexpand::expandSub(const Ppatch& orgppatch, const int id,
     return 1;
   }
 
+#if USE_GPU
+
   pthread_mutex_lock(&m_queueLock);
   m_numPatchesInFlight++;
   pthread_mutex_unlock(&m_queueLock);
@@ -303,6 +363,14 @@ int Cexpand::expandSub(const Ppatch& orgppatch, const int id,
   //m_fm.m_optim.refinePatchGPU(patch, id, 100);
   m_fm.m_optim.refinePatch(patch, id, 100);
   */
+#else
+
+  //-----------------------------------------------------------------
+  m_fm.m_optim.refinePatch(patch, id, 100);
+
+  postProcessSub(ppatch, id);
+
+#endif
 
   return 0;
 }

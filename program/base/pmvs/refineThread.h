@@ -110,6 +110,7 @@ namespace PMVS3 {
             void initCLPatchParams();
             void destroyCL();
             void refinePatchesGPU();
+			void refinePatchesCPU();
 
             static void *threadLoopTmp(void *args);
             void threadLoop();

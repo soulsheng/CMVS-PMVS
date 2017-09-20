@@ -270,6 +270,23 @@ void CrefineThread::destroyCL() {
     clReleaseCommandQueue(m_clQueue);
 }
 
+void CrefineThread::refinePatchesCPU() {
+
+	for (std::map<int, RefineWorkItem>::iterator iter = m_taskMap.begin();
+		iter != m_taskMap.end(); iter++)
+	{
+		double p[3];
+		for (int i = 0; i < 3; i++) 
+			p[i] = iter->second.encodedVec.s[i];
+		
+		m_fm.m_optim.refinePatch_kernel(p, iter->second.id, 100);
+		
+		for (int i = 0; i < 3; i++)
+			iter->second.encodedVec.s[i] = p[i];
+	}
+
+}
+
 void CrefineThread::refinePatchesGPU() {
   int status;
   cl_int clErr;
@@ -375,8 +392,11 @@ void CrefineThread::iterateRefineTasks() {
     // several iterations of minimization on all tasks that
     // are in progress.
     //
+#if USE_GPU
     refinePatchesGPU();
-
+#else
+	refinePatchesCPU();
+#endif
     // For now just do original refine routine on CPU to test
     // batching code.
     for(iter = m_taskMap.begin(); iter != m_taskMap.end(); iter++) {

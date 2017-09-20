@@ -1246,6 +1246,66 @@ bool Coptim::refinePatchBFGS(Cpatch& patch, const int id,
   return true;
 }
 
+bool Coptim::refinePatch_kernel(double* p, const int id, const int time)
+{
+	int idtmp = id;
+
+	double min_angle = -23.99999;	//(- M_PI / 2.0) / m_one->m_ascalesT[id];
+	double max_angle = 23.99999;	//(M_PI / 2.0) / m_one->m_ascalesT[id];
+
+	std::vector<double> lower_bounds(3);
+	lower_bounds[0] = -HUGE_VAL;		// Not bound
+	lower_bounds[1] = min_angle;
+	lower_bounds[2] = min_angle;
+	std::vector<double> upper_bounds(3);
+	upper_bounds[0] = HUGE_VAL;		// Not bound
+	upper_bounds[1] = max_angle;
+	upper_bounds[2] = max_angle;
+
+	bool success = false;
+
+	try
+	{
+		// LN_NELDERMEAD: Corresponds to the N-Simplex-Algorithm of GSL, that was used originally here
+		// LN_SBPLX
+		// LN_COBYLA
+		// LN_BOBYQA
+		// LN_PRAXIS
+		nlopt::opt opt(nlopt::LN_BOBYQA, 3);
+		opt.set_min_objective(my_f, &idtmp);
+		opt.set_xtol_rel(1.e-7);
+		opt.set_maxeval(time);
+
+		opt.set_lower_bounds(lower_bounds);
+		opt.set_upper_bounds(upper_bounds);
+
+		std::vector<double> x(3);
+		for (int i = 0; i < 3; i++)
+		{
+			// NLOPT returns an error if x is not within the bounds
+			x[i] = max(min(p[i], upper_bounds[i]), lower_bounds[i]);
+		}
+
+		double minf;
+		nlopt::result result = opt.optimize(x, minf);
+
+		p[0] = x[0];
+		p[1] = x[1];
+		p[2] = x[2];
+
+		success = (result == nlopt::SUCCESS
+			|| result == nlopt::STOPVAL_REACHED
+			|| result == nlopt::FTOL_REACHED
+			|| result == nlopt::XTOL_REACHED);
+	}
+	catch (std::exception &e)
+	{
+		success = false;
+	}
+
+	return success;
+}
+
 void Coptim::finishRefine(Cpatch &patch, int id, cl_float4 encodedVec, int status) {
     if(status == REFINE_SUCCESS) {
         double p[3];

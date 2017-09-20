@@ -45,13 +45,16 @@ class Cexpand {
   //-----------------------------------------------------------------  
   void expandThread(void);
   static void* expandThreadTmp(void* arg);
-
+  void expandThread2(void);
+  static void* expandThreadTmp2(void* arg);
   void postProcessThread(void);
   static void* postProcessThreadTmp(void *arg);
 
   CasyncQueue<int> m_idQueue;
   CasyncQueue<RefineWorkItem> m_postProcessQueue;
+#if USE_GPU
   CrefineThread m_refineThread;
+#endif
   int m_numPatchesInFlight;
 
   // Number of trials
